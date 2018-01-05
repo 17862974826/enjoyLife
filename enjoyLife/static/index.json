@@ -1,0 +1,60 @@
+{
+	"ret": true,
+	"data": {
+		"slider": [
+		  {
+	        "id": "0001",
+	        "imgUrl": "http://static1.keepcdn.com/2017/12/14/21/1513259509055_751x401.jpg"
+	      }, {
+	        "id": "0002",
+	        "imgUrl": "http://static1.keepcdn.com/2017/12/26/17/1514280419502_750x400.jpg"
+	      }, {
+	       "id": "0003",
+	       "imgUrl": "http://static1.keepcdn.com/2017/12/25/23/1514214821351_750x400.jpg"
+	      },{
+        	"id": "0004",
+        	"imgUrl": "http://static1.keepcdn.com/2017/12/05/00/1512403419934_750x400.jpg"
+       	  },{
+        	"id": "0005",
+        	"imgUrl": "https://static1.keepcdn.com/2017/12/28/10/1514427717611_750x400.jpg"
+          }
+		],
+		"sport": [
+		{
+			"id": "0006",
+			"imgUrl": "http://static1.keepcdn.com/picture/2018/01/05/16/e1d3e19dc8ff493d636fdc93afb77e855c03e4f4_1515x1514.jpg",
+			"title": "增肌入门训练",
+			"person": "156879",
+			"active": "998"
+		},
+		{
+			"id": "0007",
+			"imgUrl": "http://static1.keepcdn.com/picture/2018/01/05/14/17e89915b26f9bbaaf678daf9108084d275aa627_1080x1080.jpg",
+			"title": "增肌强化训练",
+			"person": "15689",
+			"active": "93"
+		},
+		{
+			"id": "0008",
+			"imgUrl": "http://static1.keepcdn.com/picture/2018/01/05/19/5851e6df8e130ad52961f95d32a494df877d6f27_1476x1969.jpg",
+			"title": "增肌终极训练",
+			"person": "156879",
+			"active": "9980"
+		},
+		{
+			"id": "0009",
+			"imgUrl": "http://static1.keepcdn.com/picture/2018/01/05/07/8b36676b1c348a98b69dcbc92a9b5740b7a775ed_1124x1500.jpg",
+			"title": "增肌大神训练",
+			"person": "15623389",
+			"active": "93"
+		},
+		{
+			"id": "0010",
+			"imgUrl": "http://static1.keepcdn.com/picture/2018/01/05/13/bcc140ba473123d57f3c9389c13d542f4134f3e3_1486x1487.jpg",
+			"title": "增肌无敌训练",
+			"person": "156",
+			"active": "5"
+		}
+		]
+	}
+}
