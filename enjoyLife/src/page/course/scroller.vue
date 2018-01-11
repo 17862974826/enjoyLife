@@ -3,20 +3,20 @@
      <div class="content">
 	     <div v-for="item in num" class="inner">
 	     	<h2 class="title">增肌训练</h2>
-				<swiper :options="swiperOption" class="img_wrap">
-	        <swiper-slide v-for="item in sport">
-	          <div class="des_wrap">
-	            <img :src="item.imgUrl">
-	            <div class="des">
-	            	<div class="des_total">
-	            		<div class="des_title">{{item.title}}</div>
-	            		<div class="des_person">{{item.person}}人参与</div>
-	            		<div class="des_active">{{item.active}}人正在训练</div>
-	            	</div>
-	            </div>
-	          </div>
-	        </swiper-slide>
-	      </swiper>
+			<swiper :options="swiperOption" class="img_wrap" ref="swiper">
+		        <swiper-slide v-for="item in sport">
+		          <div class="des_wrap">
+		            <img :src="item.imgUrl">
+		            <div class="des">
+		            	<div class="des_total">
+		            		<div class="des_title">{{item.title}}</div>
+		            		<div class="des_person">{{item.person}}人参与</div>
+		            		<div class="des_active">{{item.active}}人正在训练</div>
+		            	</div>
+		            </div>
+		          </div>
+		        </swiper-slide>
+	      	</swiper>
 	     </div>
      </div>
    </div>
@@ -32,10 +32,12 @@ export default {
   data () {
     return {
       swiperOption: {
-        loop: true,
-        slidesPerView: 1.8,
+        slidesPerView: 1.5,
         centeredSlides: true,
-        spaceBetween: 15
+        spaceBetween: 15,
+        loop: true,
+        loopAdditionalSlides: 1,
+        initialSlide: 1
       }
     }
   },
@@ -48,6 +50,12 @@ export default {
     this.$nextTick(() => {
       this.scroll = new BScroll(this.$refs.wrapper)
     })
+  },
+  activated () {
+    this.scroll && this.scroll.scrollTo(0, 0)
+    this.$refs.swiper && this.$refs.swiper.forEach((value) => {
+      value.swiper.slideTo(1)
+    })
   }
 }
 </script>
@@ -56,6 +64,7 @@ export default {
 <style scoped>
 	.inner {
 		margin-top: 0.1rem;
+		position: relative;
 	}
 	.title {
 		line-height: 0.9rem;
@@ -66,8 +75,16 @@ export default {
 	}
 	.img_wrap{
 		width: 100%;
-		height: 54vw;
+		height: 53vw;
 		overflow: hidden;
+	}
+	.start {
+		position: absolute;
+		left: -1.3rem;
+		bottom: 0;
+		width: 15%;
+		height: 100%;
+		background: #fff;
 	}
 	.des_wrap {
 		position: relative;
@@ -94,6 +111,7 @@ export default {
 	}
 	.img_wrap img {
 		width: 100%;
+		height: 100%;
 	}
 	.des_title {
 		font-size: 0.4rem;

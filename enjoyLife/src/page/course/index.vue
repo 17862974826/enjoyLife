@@ -30,10 +30,12 @@ export default {
       slider: [],
       sport: [],
       swiperOption: {
-        loopedSlides: 8,
+        initialSlide: 1,
         pagination: '.swiper-pagination',
         loop: true,
-        autoplay: 8000
+        autoplay: 8000,
+        observer: true,
+        observeParents: true
       }
     }
   },
