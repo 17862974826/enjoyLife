@@ -7,7 +7,8 @@ import detailIndex from '@/page/detail/index'
 import Index from '@/page/index/index'
 import detail from '@/page/sportDetail/detail'
 import action from '@/page/actionVideo/action'
-import toast from '../components/ui/toast'
+import register from '@/page/register/register'
+import login from '@/page/login/login'
 
 Vue.use(Router)
 
@@ -15,9 +16,13 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/index'
-    },
-    {
+      name: 'Index',
+      component: Index
+    }, {
+      path: '/index',
+      name: 'Index',
+      component: Index
+    }, {
       path: '/course',
       name: 'courseIndex',
       component: courseIndex
@@ -34,28 +39,25 @@ const router = new Router({
       name: 'detail',
       component: detailIndex
     }, {
-      path: '/index',
-      name: 'Index',
-      component: Index,
-      children: [{
-        path: 'ride',
-        component: toast
-      }, {
-        path: 'walk',
-        component: toast
-      }]
-    }, {
-      path: '/detail/:id',
-      name: 'detail',
+      path: '/sportDetail/:id',
+      name: 'sportDetail',
       component: detail,
-      props: true,
-      meta: { scrollToTop: true }
+      props: true
     }, {
       path: '/action/:id',
       name: 'action',
       component: action,
       props: true
-    }]
+    }, {
+      path: '/register',
+      name: 'register',
+      component: register
+    }, {
+      path: '/login',
+      name: 'login',
+      component: login
+    }
+  ]
 })
 export default router
 
