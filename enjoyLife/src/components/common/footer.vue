@@ -34,11 +34,14 @@ export default {
 	.list {
 		display: flex;
 	}
-	.list li {
+	li {
 		flex: 1;
 		line-height: 0.98rem;
 		font-size: 0.3rem;
 		text-align: center;
 		color: #666;
+	}
+	.router-link-exact-active {
+		color: #7cbcfe;
 	}
 </style>

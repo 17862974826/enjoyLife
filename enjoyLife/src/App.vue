@@ -1,8 +1,8 @@
 <template>
   <div id="app">
   	<transition 
-      enter-active-class="animated zoomIn"
-      leave-active-class="animated zoomOut"
+      enter-active-class="animated fadeInLeft"
+      leave-active-class="animated fadeOutRight"
     >
       <keep-alive>
     	 <router-view/>

@@ -1,5 +1,5 @@
 <template>
-   <div class="fun">
+   <div class="toast">
    		该功能暂未开放
    </div>
 </template>
@@ -7,13 +7,13 @@
 <script>
 
 export default {
-  name: 'ride'
+  name: 'toast'
 }
 </script>
 
 
 <style scoped>
-	.fun {
+	.toast {
 		position: absolute;
 		left: 50%;
 		top: 1.8rem;

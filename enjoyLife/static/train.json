@@ -1,0 +1,288 @@
+{
+	"ret": true,
+	"data": {
+		"banner":{
+			"0006":{
+				"id": "b0009",
+				"title": "核心功能进阶",
+				"pioneer": "1793161 人训练",
+				"imgUrl": "background-image:url(https://static1.keepcdn.com/2016/11/08/15/1478588663420_750x700.jpg)"
+			},
+			"0007":{
+				"id": "b0001",
+				"title": "模特身材养成计划",
+				"pioneer": "11212134人参与",
+				"imgUrl": "background-image:url(https://static1.keepcdn.com/misc/2015/10/20/17/54212a772f000000.jpg);"
+			},
+			"0008":{
+				"id": "b0008",
+				"title": "零基础徒手减脂",
+				"pioneer": "1255640人训练",
+				"imgUrl": "background-image:url(http://static1.keepcdn.com/2017/08/25/14/1503643687750_750x700.jpg)"
+			},
+			"0009":{
+				"id": "b0009",
+				"title": "健美身材增肌计划",
+				"pioneer": "1721678 人训练",
+				"imgUrl": "background-image:url(https://static1.keepcdn.com/misc/2015/10/20/17/54212a80de800000.jpg)"
+			},
+			"0010":{
+				"id": "b00010",
+				"title": "足球热身",
+				"pioneer": "13569 人训练",
+				"imgUrl": "background-image:url(http://static1.keepcdn.com/2017/11/14/16/1510649365770_750x700.jpg)"
+			}
+		},
+		"train":{
+			"0006": [{
+			"id": "t001",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1500865417541.jpg",
+			"title": "臀桥",
+			"classTime": "1*10"
+			},{
+			"id": "t002",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1502965180225.jpg",
+			"title": "静态臀桥",
+			"classTime": "1*30"
+			},{
+			"id": "t003",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1501125622951.jpg",
+			"title": "动态平板支撑",
+			"classTime": "1*10"
+			},{
+			"id": "t004",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1500877916396.jpg",
+			"title": "左侧侧支撑抬臀",
+			"classTime": "1*15"
+			},{
+			"id": "t005",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1500956597085.jpg",
+			"title": "俯卧TW伸展",
+			"classTime": "1*10"
+			},{
+			"id": "t006",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1500889664748.jpg",
+			"title": "小燕飞",
+			"classTime": "1*30"
+			}],
+
+			"0007": [{
+			"id": "t0001",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0103103.jpg",
+			"title": "下斜夹胸",
+			"classTime": "4*10"
+			},{
+			"id": "t0002",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0602101.jpg",
+			"title": "杠铃片俄罗斯转体",
+			"classTime": "4*20"
+			},{
+			"id": "t0003",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0601104.jpg",
+			"title": "直腿卷腹",
+			"classTime": "4*15"
+			},{
+			"id": "t0004",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0603111.jpg",
+			"title": "屈膝收腹",
+			"classTime": "4*20"
+			},{
+			"id": "t0005",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0100106.jpg",
+			"title": "哑铃推胸",
+			"classTime": "4*15"
+			},{
+			"id": "t0006",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0103104.jpg",
+			"title": "下胸俯卧撑",
+			"classTime": "4*8"
+			}],
+
+			"0008": [{
+			"id": "t0008",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1501216113102.jpg",
+			"title": "前后交叉小跳",
+			"classTime": "1*30"
+			},{
+			"id": "t0009",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1503558760692.jpg",
+			"title": "推墙高抬腿",
+			"classTime": "1*20"
+			},{
+			"id": "t00010",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1502965547966.jpg",
+			"title": "开合跳",
+			"classTime": "1*30"
+			},{
+			"id": "t00011",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1501136972992.jpg",
+			"title": "站姿体侧屈",
+			"classTime": "1*10"
+			},{
+			"id": "t00012",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1503559116032.jpg",
+			"title": "半蹲前后移动",
+			"classTime": "1*30"
+			},{
+			"id": "t00013",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1501049930072.jpg",
+			"title": "抱脚尖蹲起",
+			"classTime": "1*20"
+			}],
+
+			"0009": [{
+			"id": "t00014",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0102102.jpg",
+			"title": "平板卧推",
+			"classTime": "3*8"
+			},{
+			"id": "t00015",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0103102.jpg",
+			"title": "双杠臂屈伸",
+			"classTime": "3*6"
+			},{
+			"id": "t00016",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0702103.jpg",
+			"title": "窄距卧推",
+			"classTime": "3*8"
+			},{
+			"id": "t00017",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0702101.jpg",
+			"title": "仰卧臂屈伸",
+			"classTime": "3*10"
+			},{
+			"id": "t00018",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0601103.jpg",
+			"title": "负重卷腹",
+			"classTime": "3*15"
+			},{
+			"id": "t00019",
+			"imgUrl": "https://static1.keepcdn.com/thumbnails/f/0103103.jpg",
+			"title": "下斜夹胸",
+			"classTime": "3*20"
+			}],
+
+			"0010": [{
+			"id": "t00020",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1510296647226.jpg",
+			"title": "交替摆臂",
+			"classTime": "1*20"
+			},{
+			"id": "t00021",
+			"imgUrl":"https://static1.gotokeep.com/picture/frame/1510296831399.jpg",
+			"title": "肩关节前后环绕",
+			"classTime": "1*16"
+			},{
+			"id": "t00022",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1510296909765.jpg",
+			"title": "左右扭转",
+			"classTime": "1*20"
+			},{
+			"id": "t00023",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1510297063876.jpg",
+			"title": "分腿腰部拉伸",
+			"classTime": "3*20"
+			},{
+			"id": "t00018",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1510301893895.jpg",
+			"title": "交替向前踢腿",
+			"classTime": "1*15"
+			},{
+			"id": "t00019",
+			"imgUrl": "https://static1.gotokeep.com/picture/frame/1510302063878.jpg",
+			"title": "分腿高抬腿",
+			"classTime": "3*20"
+			}]
+
+		},
+		"show": {
+			"0006": [{
+				"id": "show001",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2018/01/11/09/fa581bd66586073893996121e15456769a9d1b21_1500x1501.jpg);"
+				},{
+				"id": "show002",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/10/13/10/be8ea3a84d0f679f7bc7cf71bc76cdb5ebcd29e8_1502x1517.jpg);"
+				},{
+				"id": "show003",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/12/20/12/5488346fd0fb0320579ede12a0421ca93b7d8282_272x480.jpg);"
+				},{
+				"id": "show004",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/11/12/17/a948cb60aa0c662c7e59067080f2494595dfd831_1868x2000.jpg);"
+				},{
+				"id": "show005",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/10/14/21/841868f9ec5c9ec909b36a820bf679cf0c699c53_1920x1080.jpg);"
+				},{
+				"id": "show006",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/09/26/06/da1a47100569c2834b8bed8eccda2f6c02ce28b4_1080x1080.jpg);"
+				}],
+
+			"0007": [{
+				"id": "show0001",
+				"imgUrl": "background-image: url('http://static1.keepcdn.com/picture/2018/01/07/18/e3650ea77568faff2e890208d20f582e8ff903f5_2000x2000.jpg')"
+				},{
+				"id": "show0002",
+				"imgUrl": "background-image: url('http://static1.keepcdn.com/picture/2017/08/14/23/bb9b19cd5307fe0257ae04121b391795bbdd7da9_800x1066.jpg')"
+				},{
+				"id": "show0003",
+				"imgUrl": "background-image: url('http://static1.keepcdn.com/picture/2017/08/08/12/814977dae87c14c0e82e5616cbfa8e646784d0c1_1500x1501.jpg')"
+				},{
+				"id": "show0004",
+				"imgUrl": "background-image: url('http://static1.keepcdn.com/picture/2017/07/21/14/7749c899f5c7d6894ed2448363f83805eb36597c_663x497.jpg')"
+				},{
+				"id": "show0005",
+				"imgUrl": "background-image: url('http://static1.keepcdn.com/picture/2016/12/07/22/4e063b3bb0cc0aaa4d76e0e091428cb222ae476a_320x273.jpg')"
+				},{
+				"id": "show0006",
+				"imgUrl": "background-image: url('http://static1.keepcdn.com/picture/2017/04/04/18/b7043d95c00e4033c9fd6a2f66c46f2ea1c41ca4_1500x2000.jpg')"
+				}],
+
+			"0008": [{
+				"id": "show007",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/12/25/20/120bfea6906ab4cd491a23f1657e6459e7bb0cbe_1502x1502.jpg)"
+				},{
+				"id": "show008",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/09/27/08/8b9347fc666be271bdea737f2b1cbd484a394c82_1500x2000.jpg)"
+				}],
+
+			"0009": [{
+				"id": "show0009",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/12/28/19/6a2feba1af966e1f2970256e5abbc920bfd363d4_800x800.jpg);"
+				},{
+				"id": "show00010",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/04/20/10/3f226aa67f7eaf98fcda49ae2ca45f1a3ac9439e_1310x1309.jpg);"
+				},{
+				"id": "show00011",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/03/14/22/e783289924cb286fb18fc537490c515e4e2c9ea9_800x800.jpg);"
+				},{
+				"id": "show00012",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/02/17/17/72e086421619cdf9bf3a63e2dfd5d81835bfbc09_1500x1500.jpg);"
+				},{
+				"id": "show00013",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/01/28/19/195935b88fc15020eb67741cdd1cf0db049d27ab_662x662.jpg);"
+				},{
+				"id": "show00014",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/01/11/17/0bea6cbd7741888df972b7c41956c9432e6704e4_659x659.jpg);"
+				}],
+
+			"0010": [{
+				"id": "show00015",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/12/08/21/15bec89a6bffad2d37baf912504f8fa8bbf4a14c_1494x1495.jpg);"
+				},{
+				"id": "show00016",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/11/26/10/a5d07066e39fa65c0bbb6289a1c1d583480c2b3d_540x960.jpg);"
+				},{
+				"id": "show00017",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/11/12/12/816090a753113d80d7401f6cf807d55856bf42eb_1080x810.jpg);"
+				},{
+				"id": "show00018",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/11/25/08/597617a163c10399165532cc20905dde272216b3_1920x1080.jpg);"
+				},{
+				"id": "show00013",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/12/25/10/183ffc8d00f4e597c3148db5f4b38dd3d24ea3ef_750x1001.jpg);"
+				},{
+				"id": "show00014",
+				"imgUrl": "background-image: url(http://static1.keepcdn.com/picture/2017/11/12/15/1b93e0f03f1d58b9be8227f43b7df6a1a3382f5b_540x720.jpg);"
+				}]
+		}
+	}
+}

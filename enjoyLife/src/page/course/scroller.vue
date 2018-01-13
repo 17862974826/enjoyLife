@@ -5,7 +5,7 @@
 	     	<h2 class="title">增肌训练</h2>
 			<swiper :options="swiperOption" class="img_wrap" ref="swiper">
 		        <swiper-slide v-for="item in sport">
-		          <div class="des_wrap">
+		          <div class="des_wrap" @click.preventDefault="handleClick(item.id)">
 		            <img :src="item.imgUrl">
 		            <div class="des">
 		            	<div class="des_total">
@@ -35,10 +35,24 @@ export default {
         slidesPerView: 1.5,
         centeredSlides: true,
         spaceBetween: 15,
-        loop: true,
-        loopAdditionalSlides: 1,
-        initialSlide: 1
+        initialSlide: 1,
+        observer: true,
+        observerParents: true,
+        passiveListeners: false
       }
+    }
+  },
+  methods: {
+    handleClick (id) {
+      this.$router.push({
+        name: 'detail',
+        params: {id: id}
+      })
+    },
+    refreshSwiper () {
+      this.$refs.swiper.forEach((value) => {
+        value.swiper.slideTo(1)
+      })
     }
   },
   computed: {
@@ -48,13 +62,9 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.wrapper)
-    })
-  },
-  activated () {
-    this.scroll && this.scroll.scrollTo(0, 0)
-    this.$refs.swiper && this.$refs.swiper.forEach((value) => {
-      value.swiper.slideTo(1)
+      this.scroll = new BScroll(this.$refs.wrapper, {
+        click: true
+      })
     })
   }
 }

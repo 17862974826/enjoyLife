@@ -5,9 +5,11 @@ import './assets/style/style.css'
 import './assets/style/animate.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import FastClick from 'fastclick'
 
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
+FastClick.attach(document.body)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

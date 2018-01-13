@@ -12,7 +12,7 @@
       </swiper>
     </div>
 
-    <scroller class="scroll" :sport="sport"></scroller>
+    <scroller class="scroll" :sport="sport" ref="scroller"></scroller>
 
     <course-footer></course-footer>
    </div>
@@ -35,7 +35,8 @@ export default {
         loop: true,
         autoplay: 8000,
         observer: true,
-        observeParents: true
+        observeParents: true,
+        speed: 3000
       }
     }
   },
@@ -59,6 +60,14 @@ export default {
   created () {
     axios.get('/static/index.json').then(this.getCourseDataSucc.bind(this))
                                    .then(this.getCourseDataErr.bind(this))
+  },
+
+  beforeRouteLeave (to, from, next) {
+    if (to.name !== 'detail') {
+      this.$refs.scroller.refreshSwiper()
+    }
+    this.scroll && this.scroll.scrollTo(0, 0)
+    next()
   }
 }
 </script>
