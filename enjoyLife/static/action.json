@@ -1,0 +1,37 @@
+{
+	"ret": true,
+	"data": {
+		"t0001": {
+			"videoUrl": "https://static1.keepcdn.com/chaos/0728/B008C037_main_s.mp4",
+			"imgUrl": "background-image:url('https://static1.gotokeep.com/picture/frame/1501239002141.jpg');",
+			"title": "向前肩部环绕",
+			"step":[
+				"身体站直，双脚打开与肩同宽，保持身体稳定，手指虚握，大拇指点在肩部上",
+				"屈臂，肩膀向前做画圆动作，幅度越大越好"
+			],
+			"breathe": [
+				"自然呼吸"
+			],
+			"feel": [
+				"肩部有拉伸感"
+			]
+		},
+		"t00020": {
+			"videoUrl": "https://static1.keepcdn.com/chaos/0728/B028C034_main_s.mp4",
+			"imgUrl": "background-image:url('https://static1.gotokeep.com/picture/frame/1500865095385.jpg')",
+			"title": "向前肩部环绕",
+			"step":[
+				"仰卧在瑜伽垫上，双腿屈曲略宽于肩，脚跟踩地",
+				"发力将臀部抬起至大腿与身体呈一条直线，臀部抬起时上背部支撑地面",
+				"下落时下背部贴地，但臀部悬空"
+			],
+			"breathe": [
+				"臀部抬起时呼气，臀部下落吸气"
+			],
+			"feel": [
+				"感受臀部慢慢离开瑜伽垫",
+				"到顶部后，臀部有强烈的收缩挤压感"
+			]
+		}
+	}
+}

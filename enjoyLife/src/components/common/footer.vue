@@ -22,6 +22,7 @@
 				<div class="footer-item">我</div>
 			</div>
 		</router-link>
+
    </div>
 </template>
 
