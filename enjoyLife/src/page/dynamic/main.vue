@@ -1,18 +1,27 @@
 <template>
 	<div class="mainWrap" ref="mainWrap">
 		<ul>
-			<li class="main-con border-bottom" v-for="item in hotData" :key="item.id">
+			<router-link  :to="'/detail/' + item.id" 
+										class="main-con border-bottom" 
+										v-for="item in hotData" 
+										:key="item.id" 
+										tag="li">
 			 	<div class="img-wrap">
 			 		<img class="img-img" :src="item.imgUrl" alt="">
 			 	</div>
 			 	<div class="main-right">
 			 		<p class="main-desc">{{item.desc}}</p>
 			 		<p class="name-desc">
-			 		  {{item.name}}
-			 		  <span class="like-num"><i class="iconfont">&#xe733;</i>{{item.num}}</span>
+			 		  <span> {{item.name}}</span>
+			 		  <span class="like-num">
+				 		  <i class="iconfont"  @click.stop="handleLoveClick" ref="icon">
+				 		  	&#xe733;
+				 		  </i>
+				 		  {{item.num}}
+			 		  </span>
 			 		</p>
 			 	</div>
-			 </li>
+			 </router-link>
 		 </ul>
 	</div>
 </template>
@@ -27,6 +36,11 @@
 	    this.$nextTick(() => {
 	      this.scroll = new BScroll(this.$refs.mainWrap)
 	    })
+	  },
+	  methods: {
+	    handleLoveClick (e) {
+	      e.target.className = 'iconfont hot-icons'
+	    }
 	  }
 	}
 </script>
@@ -63,7 +77,13 @@
 	 	margin-top: 1.1rem;
 	 }
 	 .like-num{
+	 	display: inline-block;
+	 	width: 1rem;
+	 	height: 1rem;
 	 	float: right;
 	 	margin-right: .5rem;
+	 }
+	 .hot-icons{
+	 	color: red;
 	 }
 </style>

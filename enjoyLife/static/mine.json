@@ -1,0 +1,16 @@
+{
+	"ret": true,
+	"data": {
+		"userInfo": {
+			"name": "昵昵称",
+			"about": 201,
+			"fin": 549,
+			"dyn": 103,
+			"imgUrl": "http://static1.keepcdn.com/avatar/2017/08/25/12/34452536f2f60436510506dd2308a6dba8046e37.jpg?imageMogr2/thumbnail/96x"
+		}, 
+		"classify": {
+			"total": "6个月",
+			"grade": "E等级"
+		}
+	}
+}

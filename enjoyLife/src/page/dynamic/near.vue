@@ -1,21 +1,23 @@
 <template>
 	<div class="near">
-		<div class="near-people border-topbottom">附近的人
-			<span class="filter">筛选<i class="iconfont icons">&#xe7e0;</i></span>
-		</div>
+		<div class="near-people border-topbottom">附近的人</div>
 		<div class="white-space border-bottom"></div>
 		<div class="box" ref="box">
 			<ul>
-				<li class="items border-bottom" v-for="item in nearData" :key="item.id">
-						<div class="img-wrap">
-							<img class="user-img" :src="item.imgUrl" alt="">
-						</div>
-						<div class="userInfo">
-							<p>{{item.name}}</p>
-							<p class="user-case">{{item.desc}}</p>
-						</div>
-						<div class="attach">关注</div>
-				</li>
+				<router-link :to="'/detail/' + item.id" 
+					class="items border-bottom" 
+					v-for="item in nearData" 
+					:key="item.id"
+					tag="li">
+					<div class="img-wrap">
+						<img class="user-img" :src="item.imgUrl" alt="">
+					</div>
+					<div class="userInfo">
+						<p>{{item.name}}</p>
+						<p class="user-case">{{item.desc}}</p>
+					</div>
+					<div class="attach" @click.stop="handleAttClick">关注</div>
+				</router-link>
 			</ul>
 		</div>
 	</div>
@@ -32,6 +34,11 @@
 	    this.$nextTick(() => {
 	      this.scroll = new BScroll(this.$refs.box)
 	    })
+	  },
+	  methods: {
+	    handleAttClick (e) {
+	      e.target.innerHTML = '已关注'
+	    }
 	  }
 	}
 </script>
@@ -46,13 +53,6 @@
 		font-size: .28rem;
 		color: #333333;
 		padding-left: .42rem;
-	}
-	.filter{
-		float: right;
-		margin-right: .6rem;
-	}
-	.icons{
-		margin-left: .14rem;
 	}
 	.white-space{
 		height: .14rem;

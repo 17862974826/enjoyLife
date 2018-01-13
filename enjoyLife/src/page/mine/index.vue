@@ -1,25 +1,25 @@
 <template>
 	<div class="mine-box">
 		<div class="header border-bottom">
-			<div class="iconfont icons">&#xe603;</div>
+			<div class="iconfont icons" @click="handleBackClick">&#xe65b;</div>
 			<div class="mine">我的</div>
 			<div class="iconfont icons">&#xe628;</div>
 		</div>
 		<div class="info">
 			<div class="info-wrap">
 				<div class="header-img">
-					<img class="user-img" src="http://static1.keepcdn.com/avatar/2017/08/25/12/34452536f2f60436510506dd2308a6dba8046e37.jpg?imageMogr2/thumbnail/96x" alt="">
+					<img class="user-img" :src="userInfo.imgUrl" alt="">
 				</div>
-				<p class="user-name">昵昵称</p>
+				<p class="user-name">{{userInfo.name}}</p>
 			</div>
 			<div class="user-baseInfo">
-				<div>关注：201</div>
-				<div>粉丝：549</div>
-				<div>动态：103</div>
+				<div>关注：{{userInfo.about}}</div>
+				<div>粉丝：{{userInfo.fin}}</div>
+				<div>动态：{{userInfo.dyn}}</div>
 			</div>
 		</div>
 		<div class="white-space"></div>
-		<main-class></main-class>
+		<main-class :classify="classify"></main-class>
 		<div class="white-space"></div>
 		<main-record></main-record>
 		<main-footer></main-footer>
@@ -29,12 +29,38 @@
 	import MainClass from './class'
 	import MainRecord from './record'
 	import MainFooter from 'components/common/footer'
+	import axios from 'axios'
 	export default {
 	  name: 'mine',
 	  components: {
 	    MainClass,
 	    MainRecord,
 	    MainFooter
+	  },
+	  data () {
+	    return {
+	      userInfo: {},
+	      classify: {}
+	    }
+	  },
+	  created () {
+	    axios.get('/static/mine.json').then(this.handleGetInfoSucc.bind(this))
+	                                  .catch(this.handleGetInfoErr.bind(this))
+	  },
+	  methods: {
+	    handleGetInfoSucc (res) {
+	      res.data && (res = res.data.data)
+	      if (res && res.userInfo && res.classify) {
+	        this.classify = res.classify
+	        this.userInfo = res.userInfo
+	      }
+	    },
+	    handleGetInfoErr () {
+	      console.log('Error')
+	    },
+	    handleBackClick () {
+	      this.$router.go(-1)
+	    }
 	  }
 	}
 </script>
@@ -51,9 +77,9 @@
 		.header{
 			display: flex;
 			line-height: 1rem;
-			font-size: .3rem;
-			color: #fff;
-			background: #24c789;
+			font-size: .34rem;
+			color: #60adfe;
+			background: #fff;
 		}
 		.icons{
 			width: 1.2rem;

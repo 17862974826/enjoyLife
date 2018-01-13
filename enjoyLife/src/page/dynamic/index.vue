@@ -2,9 +2,12 @@
 	<div class="wrap">
 		<div class="header">
 			<div class="back iconfont" @click="handleBackClick">&#xe65b;</div>
-			<div class="header-con" @click="handleHotComClick">热门</div>
-			<div class="header-con" @click="handleAttentionClick">关注</div>
-			<div class="header-con" @click="handleNearClick">附近</div>
+			<div class="header-con" :class="{'header-active': isError}" 
+				@click="handleHotComClick">热门</div>
+			<div class="header-con" :class="{'header-active': isActive}"
+				 @click="handleAttentionClick">关注</div>
+			<div class="header-con" :class="{'header-active': isBorder}"
+				 @click="handleNearClick">附近</div>
 			<div class="search iconfont">&#xe628;</div>
 		</div>
 		 
@@ -39,7 +42,10 @@
 	      nearData: [],
 	      show: true,
 	      attentionShow: false,
-	      nearShow: false
+	      nearShow: false,
+	      isError: true,
+	      isActive: false,
+	      isBorder: false
 	    }
 	  },
 	  created () {
@@ -60,21 +66,30 @@
 	    handleGetDataErr () {},
 	    handleHotComClick () {
 	      this.show = true
+	      this.isError = true
+	      this.isActive = false
+	      this.isBorder = false
 	      this.attentionShow = false
 	      this.nearShow = false
 	    },
 	    handleAttentionClick () {
 	      this.show = false
+	      this.isError = false
+	      this.isActive = true
+	      this.isBorder = false
 	      this.attentionShow = true
 	      this.nearShow = false
 	    },
 	    handleNearClick () {
 	      this.show = false
+	      this.isError = false
+	      this.isActive = false
+	      this.isBorder = true
 	      this.attentionShow = false
 	      this.nearShow = true
 	    },
 	    handleBackClick () {
-	      this.router.go(-1)
+	      this.$router.go(-1)
 	    }
 	  }
 	}
@@ -93,8 +108,8 @@
 		display: flex;
 		width: 100%;
 		height: 1rem;
-		color: #fff;
-		background: #24c789;
+		color: #60adfe;
+		background: #fff;
 	}
 	.back{
 		width: 1rem;
@@ -106,7 +121,10 @@
 		line-height: 1rem;
 		width: .8rem;
 		text-align: center;
-		font-size: .32rem;
+		font-size: .34rem;
+	}
+	.header-active{
+		border-bottom: 3px solid #60adfe;
 	}
 	.search{
 		width: 1.2rem;

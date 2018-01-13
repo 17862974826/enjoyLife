@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import courseIndex from '@/page/course/index'
 import dynamic from '@/page/dynamic/index'
 import mine from '@/page/mine/index'
-
+import detail from '@/page/detail/index'
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +20,11 @@ export default new Router({
       path: '/mine',
       name: 'mine',
       component: mine
+    }, {
+      path: '/detail/:sightId',
+      name: 'detail',
+      component: detail,
+      props: true
     }
   ]
 })

@@ -1,17 +1,17 @@
 <template>
    <div class="wrapper" ref="wrapper">
      <div class="content">
-	     <div v-for="item in num" class="inner">
+	     <div v-for="(item, index) in num" class="inner" :key="index">
 	     	<h2 class="title">增肌训练</h2>
 				<swiper :options="swiperOption" class="img_wrap">
-	        <swiper-slide v-for="item in sport">
+	        <swiper-slide v-for="(vaule, index) in sport" :key="index">
 	          <div class="des_wrap">
-	            <img :src="item.imgUrl">
+	            <img :src="vaule.imgUrl">
 	            <div class="des">
 	            	<div class="des_total">
-	            		<div class="des_title">{{item.title}}</div>
-	            		<div class="des_person">{{item.person}}人参与</div>
-	            		<div class="des_active">{{item.active}}人正在训练</div>
+	            		<div class="des_title">{{vaule.title}}</div>
+	            		<div class="des_person">{{vaule.person}}人参与</div>
+	            		<div class="des_active">{{vaule.active}}人正在训练</div>
 	            	</div>
 	            </div>
 	          </div>

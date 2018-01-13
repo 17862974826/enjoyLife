@@ -1,7 +1,7 @@
 <template>
 	<div class="class-wrap">
-		<h2 class="total">总运动： 6个月</h2>
-		<h3 class="grade">E等级</h3>
+		<h2 class="total">总运动： {{classify.total}}</h2>
+		<h3 class="grade">{{classify.grade}}</h3>
 		<div class="grade-data">
 			<div class="grade-num">E1.0</div>
 			<div class="progress-bar">
@@ -17,7 +17,10 @@
 </template>
 <script>
 	export default {
-	  name: 'class'
+	  name: 'class',
+	  props: {
+	    classify: Object
+	  }
 	}
 </script>
 <style scoped>

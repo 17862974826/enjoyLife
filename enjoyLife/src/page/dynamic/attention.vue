@@ -8,12 +8,16 @@
 				BeckG
 				<span class="recomend-detail">(热门圈主)</span>
 			</p>
-			<div class="attach">关注</div>
+			<div class="attach" @click="handleAttClick">关注</div>
 		</div>
 		<div class="space border-topbottom"></div>
 		<div ref="wrapper" class="wrapper">
 			<ul>
-				<li class="container border-bottom" v-for="item in dynamicData" :key="item.id">
+				<router-link  :to="'/detail/' + item.id"  
+								class="container border-bottom" 
+								v-for="item in dynamicData" 
+								:key="item.id"
+								tag="li">
 					<div class="container-top">
 						<div class="picture container-img">
 							<img class="picture-img" :src="item.headerImg" alt="">
@@ -26,19 +30,19 @@
 					<p class="user-desc">{{item.desc}}</p>
 				<swiper :options="swiperOption">
 					<swiper-slide class="slide" 
-												v-for="product in item.imgUrl" 
-												:key="product.id"> 
+								  v-for="product in item.imgUrl" 
+								  :key="product.id"> 
 			          <div class="img-wrap">
 			            <img class="user-img" :src="product.imgurl">
 			          </div>
 		       		</swiper-slide>
 		     	</swiper> 
 					<div class="container-bottom">
-							<p class="path-line">轨迹</p>
-							<p class="user-like"><span class="iconfont user-des">&#xe733;</span>132</p>
-							<p class="user-like"><span class="iconfont user-des">&#xe66b;</span>0</p>
+						<p class="path-line">轨迹</p>
+						<p class="user-like"><span class="iconfont user-des">&#xe733;</span>132</p>
+						<p class="user-like"><span class="iconfont user-des">&#xe66b;</span>0</p>
 					</div>
-				</li>
+				</router-link>
 			</ul>
 		</div>
 	</div>
@@ -67,6 +71,11 @@
 	    this.$nextTick(() => {
 	      this.scroll = new BScroll(this.$refs.wrapper)
 	    })
+	  },
+	  methods: {
+	    handleAttClick (e) {
+	      e.target.innerHTML = '已关注'
+	    }
 	  }
 	}
 </script>
