@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import courseIndex from '@/page/course/index'
 import dynamic from '@/page/dynamic/index'
 import mine from '@/page/mine/index'
-import detail from '@/page/detail/index'
+import detailIndex from '@/page/detail/index'
 import Index from '@/page/index/index'
 import detail from '@/page/sportDetail/detail'
 import action from '@/page/actionVideo/action'
@@ -29,7 +29,7 @@ const router = new Router({
     }, {
       path: '/detail/:sightId',
       name: 'detail',
-      component: detail
+      component: detailIndex
     }, {
       path: '/',
       name: 'Index',
