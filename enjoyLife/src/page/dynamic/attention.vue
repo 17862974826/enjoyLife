@@ -61,6 +61,7 @@
 	        loop: true,
 	        slidesPerView: 2.5,
 	        spaceBetween: 30,
+	        initialSlide: 1,
 	        observer: true,
 	        observeParents: true,
 	        centeredSlides: true

@@ -9,11 +9,14 @@ import detail from '@/page/sportDetail/detail'
 import action from '@/page/actionVideo/action'
 import toast from '../components/ui/toast'
 
-
 Vue.use(Router)
 
 const router = new Router({
   routes: [
+    {
+      path: '/',
+      redirect: '/index'
+    },
     {
       path: '/course',
       name: 'courseIndex',
@@ -31,16 +34,16 @@ const router = new Router({
       name: 'detail',
       component: detailIndex
     }, {
-      path: '/',
+      path: '/index',
       name: 'Index',
       component: Index,
       children: [{
-          path: 'ride',
-          component: toast
-        }, {
-          path: 'walk',
-          component: toast
-        }]
+        path: 'ride',
+        component: toast
+      }, {
+        path: 'walk',
+        component: toast
+      }]
     }, {
       path: '/detail/:id',
       name: 'detail',

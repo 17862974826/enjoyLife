@@ -1,14 +1,18 @@
 <template>
    <div class="wrapper">
-		<div class="footer">
-			<i class="iconfont footer-icons">&#xe61a;</i>
-			<div class="footer-item">运动</div>
-		</div>
-		
-		<div class="footer">
-			<i class="iconfont footer-icons">&#xe614;</i>
-			<div class="footer-item">课程</div>
-		</div>
+		<router-link to="index" class="link">
+			<div class="footer">
+				<i class="iconfont footer-icons">&#xe61a;</i>
+				<div class="footer-item">运动</div>
+			</div>
+		</router-link>
+
+		<router-link to="course" class="link">
+			<div class="footer">
+				<i class="iconfont footer-icons">&#xe614;</i>
+				<div class="footer-item">课程</div>
+			</div>
+		</router-link>
 		
 		<router-link to="dynamic" class="link">
 			<div class="footer">
