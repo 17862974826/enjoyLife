@@ -1,7 +1,7 @@
 <template>
    <div class="slider">
      <div class="spot_wrap" v-for="items of sport">
-      <h2 class="title">跑步攻略</h2>
+      <h2 class="title">{{items.title}}</h2>
       <swiper :options="swiperOption" ref="swiper">
         <swiper-slide v-for="item in items.run" :key="item.id">
           <div class="img_wrap">

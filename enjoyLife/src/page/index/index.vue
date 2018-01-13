@@ -3,9 +3,9 @@
     <div class="wrap" ref="wrapper">
       <div class="content">
         <header class="header">
-          <router-link to="/" tag="div" class="run sport">跑步</router-link>
-          <router-link to="walk" tag="div" class="talk sport" @click.native="handleRouterClick">健走</router-link>
-          <router-link to="ride" tag="div" class="ride sport" @click.native="handleRouterClick">骑行</router-link>
+          <div class="run sport"  @click="handleRunClick" :class="{active: runActive}">跑步</div>
+          <div class="talk sport" @click="handleWalkClick" :class="{active: talkActive}">健走</div>
+          <div class="ride sport" @click="handleCycleClick" :class="{active: cycActive}">骑行</div>
         </header>
         <transition  
           enter-active-class="animated rollIn"
@@ -15,9 +15,9 @@
         <div class="container">
           <div class="start_run">
             <div class="running">
-              <p class="target">{{running}}</p>
+              <p class="target">{{showStatus.running}}</p>
               <p class="meter">KM</p>
-                <div class="mask">RUNNING</div>
+                <div class="mask">{{showStatus.mask}}</div>
             </div>
             <div class="hint">请正确佩戴手机</div>
           </div>
@@ -27,7 +27,7 @@
               <img src="/static/images/indexImg/sport_left.jpg">
               <img src="/static/images/indexImg/sport_right.jpg">
             </div>
-            <div class="btn">开始跑步</div>
+            <div class="btn">{{showStatus.title}}</div>
           </div>
         </div>
 
@@ -54,20 +54,45 @@ export default {
   data () {
     return {
       running: '',
-      sport: []
+      walking: '',
+      cycling: '',
+      showStatus: '',
+      sport: [],
+      runActive: true,
+      talkActive: false,
+      cycActive: false
     }
   },
   methods: {
     getHomeDataSucc (res) {
       res.data.data && (res = res.data.data)
-      res.running && (this.running = res.running)
-      res.sport && (this.sport = res.sport)
+      res.run && (this.running = res.run)
+      res.cycling && (this.cycling = res.cycling)
+      res.walking && (this.walking = res.walking)
+      this.sport && (this.sport = res.run.sport)
+      this.showStatus = this.running
     },
     getHomeDataErr () {},
-    handleRouterClick () {
-      setTimeout(() => {
-        this.$router.push('/')
-      }, 1300)
+    handleCycleClick () {
+      this.showStatus = this.cycling
+      this.sport = this.cycling.sport
+      this.runActive = false
+      this.talkActive = false
+      this.cycActive = true
+    },
+    handleWalkClick () {
+      this.showStatus = this.walking
+      this.sport = this.walking.sport
+      this.runActive = false
+      this.talkActive = true
+      this.cycActive = false
+    },
+    handleRunClick () {
+      this.showStatus = this.running
+      this.sport = this.running.sport
+      this.runActive = true
+      this.talkActive = false
+      this.cycActive = false
     }
   },
   mounted () {
@@ -207,7 +232,7 @@ export default {
     text-align: center;
     background: #60adfe;
   }
-  .router-link-exact-active {
+  .active {
     color: #7cbcfe;
     border-bottom: 2px solid #8abdf3;
   }

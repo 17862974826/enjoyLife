@@ -4,7 +4,8 @@ import courseIndex from '@/page/course/index'
 import Index from '@/page/index/index'
 import detail from '@/page/sportDetail/detail'
 import action from '@/page/actionVideo/action'
-import toast from '../components/ui/toast'
+import register from '@/page/register/register'
+import login from '@/page/login/login'
 
 Vue.use(Router)
 
@@ -18,30 +19,29 @@ const router = new Router({
     {
       path: '/',
       name: 'Index',
-      component: Index,
-      children: [
-        {
-          path: 'ride',
-          component: toast
-        },
-        {
-          path: 'walk',
-          component: toast
-        }
-      ]
+      component: Index
     },
     {
       path: '/detail/:id',
       name: 'detail',
       component: detail,
-      props: true,
-      meta: { scrollToTop: true }
+      props: true
     },
     {
       path: '/action/:id',
       name: 'action',
       component: action,
       props: true
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: register
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     }
   ]
 })
