@@ -95,7 +95,7 @@
 		height: .5rem;
 		margin: .55rem .54rem 0 0;
 		border-radius: .45rem;
-		background: #999999;
+		background: #60adfe;
 		color: #fff;
 		text-align: center;
 		line-height: .5rem

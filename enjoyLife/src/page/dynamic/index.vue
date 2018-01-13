@@ -107,18 +107,18 @@
 	.header{
 		display: flex;
 		width: 100%;
-		height: 1rem;
-		color: #60adfe;
+		height: 1.2rem;
+		color: #333;
 		background: #fff;
 	}
 	.back{
 		width: 1rem;
 		text-align: center;
-		line-height: 1rem;
+		line-height: 1.2rem;
 	}
 	.header-con{
 		flex: 1;
-		line-height: 1rem;
+		line-height: 1.2rem;
 		width: .8rem;
 		text-align: center;
 		font-size: .34rem;

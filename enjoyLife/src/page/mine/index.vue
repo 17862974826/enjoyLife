@@ -76,9 +76,9 @@
 		}
 		.header{
 			display: flex;
-			line-height: 1rem;
+			line-height: 1.2rem;
 			font-size: .34rem;
-			color: #60adfe;
+			color: #333;
 			background: #fff;
 		}
 		.icons{
