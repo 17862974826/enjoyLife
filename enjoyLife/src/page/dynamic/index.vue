@@ -1,7 +1,7 @@
 <template>
 	<div class="wrap">
 		<div class="header">
-			<div class="back iconfont">&#xe65b;</div>
+			<div class="back iconfont" @click="handleBackClick">&#xe65b;</div>
 			<div class="header-con" @click="handleHotComClick">热门</div>
 			<div class="header-con" @click="handleAttentionClick">关注</div>
 			<div class="header-con" @click="handleNearClick">附近</div>
@@ -72,6 +72,9 @@
 	      this.show = false
 	      this.attentionShow = false
 	      this.nearShow = true
+	    },
+	    handleBackClick () {
+	      this.router.go(-1)
 	    }
 	  }
 	}
