@@ -1,18 +1,7 @@
 <template>
    <div class="main">
      <header class="header">课程</header>
-     <div>
-      <swiper :options="swiperOption" class="img_wrap">
-        <swiper-slide v-for="item in slider" :key="item.id">
-          <div>
-            <img :src="item.imgUrl">
-          </div>
-        </swiper-slide>
-        <div class="swiper-pagination"  slot="pagination"></div>
-      </swiper>
-    </div>
-
-    <scroller class="scroll" :sport="sport" ref="scroller"></scroller>
+    <scroller class="scroll" :classify="classify" :slider="slider" ref="scroller"></scroller>
 
     <course-footer></course-footer>
    </div>
@@ -28,16 +17,7 @@ export default {
   data () {
     return {
       slider: [],
-      sport: [],
-      swiperOption: {
-        initialSlide: 1,
-        pagination: '.swiper-pagination',
-        loop: true,
-        autoplay: 8000,
-        observer: true,
-        observeParents: true,
-        speed: 3000
-      }
+      classify: []
     }
   },
   components: {
@@ -49,7 +29,7 @@ export default {
       res.data && (res = res.data)
       if (res) {
         this.slider = res.data.slider
-        this.sport = res.data.sport
+        this.classify = res.data.classify
       } else {
         this.getCourseDataErr()
       }
@@ -82,31 +62,21 @@ export default {
     right: 0;
     left: 0;
     bottom: 0;
-    background: #ebf0f2;
+    background: #ddd;
   }
   .header {
-    height: 1.2rem;
-    line-height: 1.2rem;
-    border-bottom: 1px solid #f5f5f5;
+    height: 1.29rem;
+    line-height: 0.89rem;
+    border-bottom: 1px solid #a5a5a6;
+    padding-top: 0.4rem;
     text-align: center;
-    font-size: 0.4rem;
-    color: #333;
+    font-size: 0.3rem;
+    color: #b5b5b6;
     background: #fff;
-  }
-  .img_wrap {
-    width: 100%;
-    height: 0;
-    padding-bottom: 53.3%;
-  }
-  .img_wrap img {
-    width: 100%;
+    box-sizing: border-box;
   }
   .scroll {
     flex: 1;
     overflow: hidden;
-    margin-top: 0.2rem;
-  }
-  .swiper-pagination >>> span {
-    background: #fff;
   }
 </style>

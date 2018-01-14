@@ -72,7 +72,7 @@ export default {
       if (this.username && this.username !== '') {
         if (this.password && this.password !== '') {
           this.addlocalStorage()
-          this.$router.push('/')
+          this.$router.push('/index')
         }
       }
     },
