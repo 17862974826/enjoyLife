@@ -3,7 +3,9 @@
 		<div class="header border-bottom">
 			<div class="iconfont icons" @click="handleBackClick">&#xe65b;</div>
 			<div class="mine">我的</div>
-			<div class="iconfont icons">&#xe628;</div>
+			<router-link to="/register">
+				<div class="iconfont icons">&#xe628;</div>
+			</router-link>
 		</div>
 		<div class="info">
 			<div class="info-wrap">

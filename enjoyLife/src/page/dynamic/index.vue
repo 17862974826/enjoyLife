@@ -8,7 +8,9 @@
 				 @click="handleAttentionClick">关注</div>
 			<div class="header-con" :class="{'header-active': isBorder}"
 				 @click="handleNearClick">附近</div>
-			<div class="search iconfont">&#xe628;</div>
+			<router-link to="/register">
+				<div class="search iconfont">&#xe628;</div>
+			</router-link>
 		</div>
 		 
 		  <dynamic-main  :hotData="hotData" v-show="show"></dynamic-main>
