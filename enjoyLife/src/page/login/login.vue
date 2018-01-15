@@ -6,9 +6,11 @@
   	</div>
   	<div class="content">
   		<div class="wrapper">
+  			<span class="iconfont icon_user">&#xe796;</span>
   			<input type="text" class="username" placeholder="请输入手机号" v-model.number="username"></input>
   		</div>
   		<div class="wrapper pwd_wrap">
+  			<span class="iconfont icon_pwd">&#xe620;</span>
   			<input type="password" class="password" placeholder="请输入密码" v-model="password"></input>
   		</div>
   		<div class="select">
@@ -32,6 +34,11 @@
   		</div>
   		<div class="division">
   			<p class="other_login">第三方登录</p>
+  			<div class="icon">
+  				<span class="iconfont inner">&#xe602;</span>
+  				<span class="iconfont inner">&#xe709;</span>
+  				<span class="iconfont inner last">&#xe63e;</span>
+  			</div>
   		</div>
   	</div>
   </div>
@@ -107,6 +114,14 @@ export default {
 	::-webkit-input-placeholder {
 		color: #b4b4b4;
 	}
+	.icon_user, .icon_pwd {
+		position: absolute;
+		top: 50%;
+		margin-left: 0.2rem;
+		transform: translateY(-50%);
+		font-size: .44rem;
+		color: #72b6fe;
+	}
 	.main {
 		position: absolute;
 		top: 0;
@@ -131,6 +146,7 @@ export default {
 	}
 	.wrapper {
 		width: 5rem;
+		position: relative;
 		height: 0.88rem;
 		margin: 0 auto;
 		background: #fff;
@@ -216,6 +232,18 @@ export default {
 		transform: translateY(-50%);
 		background: #a0cefb;
 		text-align: center;
+	}
+	.icon {
+		text-align: center;
+		padding: 0.5rem 0 0;
+	}
+	.inner {
+		font-size: 0.42rem;
+		color: #fff;
+		margin-right: 0.8rem;
+	}
+	.last {
+		margin-right: 0rem;
 	}
 </style>
 

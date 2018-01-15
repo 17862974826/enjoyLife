@@ -1,17 +1,12 @@
 <template>
   <div class="content">
-    <h2 class="title">训练计划</h2>
-    <div class="list">
-      <div class="inner_wrap" v-for="item in transItem" :key="item.id" @click.stopPropagation="handleVideoClick(item.id)">
-        <div class="img_wrap">
-          <img :src="item.imgUrl">
-        </div>
-        <div class="inner">
-          <p class="sport">{{item.title}}</p>
-          <p class="classTime">{{item.classTime}}</p>
-        </div>
-      </div>
-
+    <h2 class="title">{{train.title}}</h2>
+    <p class="des">{{train.des}}</p>
+    <div class="wrapper">
+      <em class="strength">强度</em>
+      <span class="iconfont icon-aixin active" v-for="item in train.strength"></span>
+      <span class="iconfont icon-aixin" v-for="item in num"></span>
+    </div>
     </div>
   </div>
 </template>
@@ -22,16 +17,7 @@ export default {
   props: ['train'],
   data () {
     return {
-      transItem: null
-    }
-  },
-  watch: {
-    train () {
-      if (!Array.isArray(this.train)) {
-        this.transItem = 6
-      } else {
-        this.transItem = this.train
-      }
+      num: ''
     }
   },
   methods: {
@@ -41,6 +27,13 @@ export default {
         params: {id: id}
       })
     }
+  },
+  watch: {
+    train () {
+      if (this.train.strength) {
+        this.num = 5 - this.train.strength
+      }
+    }
   }
 }
 </script>
@@ -48,44 +41,38 @@ export default {
 <style scoped>
   .content {
     background: #fff;
-    padding: 0 0.3rem;
+    padding: 0 0.2rem;
   }
   .list {
     padding-bottom: 0.1rem;
   }
   .title {
-    font-size: 0.36rem;
-    margin: 0.3rem 0;
-    text-align: center;
+    font-size: 0.32rem;
+    margin-bottom: 0.2rem;
+    padding-top: 0.3rem;
+    color: #636363;
   }
-  .inner_wrap {
-    display: flex;
-    margin: 0.3rem 0;
+  .des {
+    font-size: 0.22rem;
+    line-height: 0.28rem;
+    color: #8f8f8f;
   }
-  .img_wrap {
-    width: 45%;
-    height: 0;
-    padding-bottom: 29%;
-    background: #ccc
+  .wrapper {
+    padding: 0.2rem 0 0.3rem;
+    font-size: 0;
   }
-  .img_wrap img {
-    width: 100%;
+  .strength {
+    font-size: 0.18rem;
+    color: #a1a1a1;
+    padding-right: 0.02rem;
   }
-  .inner {
-    flex: 1;
-    margin-left: 0.3rem;
-    overflow: hidden;
+  .iconfont {
+    margin-left: 0.08rem;
+    font-size: 0.18rem;
+    color: #6a6a6a;
   }
-  .sport {
-    margin: 0.4rem 0;
-    color: #584f60;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .classTime {
-    padding: 0.3rem 0;
-    color: #999;
+  .active {
+    color: #6fb5fe;
   }
 </style>
 

@@ -2,17 +2,16 @@
   <div>
   	<div class="container">
   		<div class="banner" :style="bannerShow.imgUrl">
-  			<div class="mask">
-  				<div class="inner">
-  					<div class="title">{{bannerShow.title}}</div>
-  					<p class="star">K2</p>
-  					<p class="pioneer">{{bannerShow.pioneer}}</p>
-  				</div>
-  			</div>
-  		</div>
+        <router-link to="/course" class="back iconfont" tag="span">&#xe65b;</router-link>
+  	 </div>
 			<train :train="train"></train>
-      <show-self :showSelf="showSelf"></show-self>
-      <div class="more">查看更多</div>
+      <show-self :showSelf="showSelf" :title="title"></show-self>
+      <comment></comment>
+      <div class="footer">
+        <input class="publish" type="text" placeholder="说些什么吧" />
+        <p class="des">发布</p>
+        <p class="sign iconfont">&#xe733;</p>
+      </div>
   	</div>
   </div>
 </template>
@@ -20,6 +19,7 @@
 <script>
 import train from './train'
 import showSelf from './showSelf'
+import comment from './comment'
 import axios from 'axios'
 export default {
   name: 'detail',
@@ -31,17 +31,19 @@ export default {
       showSelf: [],
       show: [],
       banner: {},
-      bannerShow: {}
+      bannerShow: {},
+      title: ''
     }
   },
   components: {
     train,
-    showSelf
+    showSelf,
+    comment
   },
   watch: {
     '$route' () {
       this.train = this.disposeData({}, this.list)
-      this.showSelf = this.disposeData({}, this.show)
+      this.showSelf = this.disposeData({}, this.show.content)
       this.bannerShow = this.disposeData({}, this.banner)
     }
   },
@@ -51,8 +53,9 @@ export default {
       res.banner && (this.banner = res.banner)
       res.train && (this.list = res.train)
       res.show && (this.show = res.show)
+      this.title = this.show.title
       this.train = this.disposeData({}, this.list)
-      this.showSelf = this.disposeData({}, this.show)
+      this.showSelf = this.disposeData({}, this.show.content)
       this.bannerShow = this.disposeData({}, this.banner)
     },
     disposeData (fresh, original) {
@@ -71,7 +74,7 @@ export default {
   },
   activated () {
     this.train = this.disposeData({}, this.list)
-    this.showSelf = this.disposeData({}, this.show)
+    this.showSelf = this.disposeData({}, this.show.content)
     this.bannerShow = this.disposeData({}, this.banner)
   }
 }
@@ -80,16 +83,23 @@ export default {
 <style scoped>
 	.container {
 		background: #ebf0f2;
+    padding-bottom: 0.98rem;
 	}
 	.banner {
     width: 100%;
-    margin-bottom: 0.3rem;
     position: relative;
-    height: 3.62rem;
+    height:0;
+    padding-bottom: 43%;
     overflow: hidden;
     background-size: cover;
-    background-position: center center;
 	}
+  .back {
+    font-size: 0.33rem;
+    position: absolute;
+    top: 0.28rem;
+    left: 0.2rem;
+    color: #fff;
+  }
 	.mask {
     position: absolute;
     top: 0;
@@ -133,6 +143,35 @@ export default {
     text-align: center;
     font-size: 0.32rem;
     background-color: #584f60;
+  }
+  .footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    align-items: center;
+    padding-left: 0.2rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 0.98rem;
+    background: #60adfe;
+  }
+  .publish {
+    border: none;
+    outline: none;
+    width: 77.3%;
+    line-height: 0.6rem;
+    padding-left: 0.1rem;
+    box-sizing: border-box;
+    font-size: 0.28rem;
+  }
+  .des {
+    margin: 0rem 0.14rem 0 0.2rem;
+    font-size: 0.3rem;
+    color: #fff;
+  }
+  .sign {
+    font-size: 0.3rem;
+   color: #fff;
   }
 </style>
 

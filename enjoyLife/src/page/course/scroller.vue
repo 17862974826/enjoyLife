@@ -23,7 +23,7 @@
 		          	<div class="strength">
 		          		<i class="des_title">强度</i>
 		          		<span class="iconfont icon-aixin active" v-for="span in +item.strength"></span>
-		          		<span class="iconfont icon-aixin" v-for="ie in 5-item.strength"></span>
+		          		<span class="iconfont icon-aixin" v-for="it in 5-item.strength"></span>
 		          	</div>
 		          	<div class="person">
 		          		{{item.des}}
