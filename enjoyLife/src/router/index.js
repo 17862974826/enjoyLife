@@ -9,6 +9,7 @@ import detail from '@/page/sportDetail/detail'
 import action from '@/page/actionVideo/action'
 import register from '@/page/register/register'
 import login from '@/page/login/login'
+import start from '@/page/start/start'
 
 Vue.use(Router)
 
@@ -52,6 +53,10 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: login
+    }, {
+      path: '/',
+      name: 'start',
+      component: start
     }
   ]
 })

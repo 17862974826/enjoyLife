@@ -4,8 +4,8 @@
       enter-active-class="animated fadeInLeft"
       leave-active-class="animated fadeOutRight"
     >
-      <keep-alive exclude="login">
-    	 <router-view/>
+      <keep-alive exclude="login start">
+    	   <router-view/>
       </keep-alive>
     </transition>
   </div>
