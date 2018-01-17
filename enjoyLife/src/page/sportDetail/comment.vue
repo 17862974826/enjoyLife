@@ -28,7 +28,6 @@ export default {
     getTrainDataSucc (res) {
       res.data.data && (res = res.data.data)
       res.comment && (this.comment = res.comment)
-      console.log(this.comment)
     },
     getTrainDataErr () {}
   },

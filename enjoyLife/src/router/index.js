@@ -10,6 +10,7 @@ import action from '@/page/actionVideo/action'
 import register from '@/page/register/register'
 import login from '@/page/login/login'
 import start from '@/page/start/start'
+import setting from '@/page/setting/setting'
 
 Vue.use(Router)
 
@@ -57,6 +58,10 @@ const router = new Router({
       path: '/',
       name: 'start',
       component: start
+    }, {
+      path: '/setting',
+      name: 'setting',
+      component: setting
     }
   ]
 })

@@ -1,9 +1,8 @@
 <template>
    <div class="main">
-     <header class="header">课程</header>
-    <scroller class="scroll" :classify="classify" :slider="slider" ref="scroller"></scroller>
-
-    <course-footer></course-footer>
+      <header class="header">课程</header>
+      <scroller class="scroll" :classify="classify" :slider="slider" ref="scroller"></scroller>
+      <course-footer></course-footer>
    </div>
 </template>
 

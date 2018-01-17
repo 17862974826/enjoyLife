@@ -1,22 +1,25 @@
 <template>
-  <div>
-  	<div class="container">
-  		<div class="banner" :style="bannerShow.imgUrl">
-        <router-link to="/course" class="back iconfont" tag="span">&#xe65b;</router-link>
-  	 </div>
-			<train :train="train"></train>
-      <show-self :showSelf="showSelf" :title="title"></show-self>
-      <comment></comment>
-      <div class="footer">
-        <input class="publish" type="text" placeholder="说些什么吧" />
-        <p class="des">发布</p>
-        <p class="sign iconfont">&#xe733;</p>
+  <div class="main">
+  	<div class="container" ref="wrapper">
+      <div>
+      		<div class="banner" :style="bannerShow.imgUrl">
+            <router-link to="/course" class="back iconfont" tag="span">&#xe65b;</router-link>
+      	  </div>
+    			<train :train="train"></train>
+          <show-self :showSelf="showSelf" :title="title"></show-self>
+          <comment></comment>
+    	</div>
+    </div>
+    <div class="footer">
+          <input class="publish" type="text" placeholder="说些什么吧" />
+          <p class="des">发布</p>
+          <p class="sign iconfont">&#xe733;</p>
       </div>
-  	</div>
   </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 import train from './train'
 import showSelf from './showSelf'
 import comment from './comment'
@@ -76,14 +79,30 @@ export default {
     this.train = this.disposeData({}, this.list)
     this.showSelf = this.disposeData({}, this.show.content)
     this.bannerShow = this.disposeData({}, this.banner)
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper)
+    })
   }
 }
 </script>
 
 <style scoped>
+  .main {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
 	.container {
-		background: #ebf0f2;
-    padding-bottom: 0.98rem;
+    flex: 1;
+    background: #ebf0f2;
+    overflow: hidden;
 	}
 	.banner {
     width: 100%;
@@ -146,8 +165,6 @@ export default {
   }
   .footer {
     display: flex;
-    position: fixed;
-    bottom: 0;
     align-items: center;
     padding-left: 0.2rem;
     box-sizing: border-box;

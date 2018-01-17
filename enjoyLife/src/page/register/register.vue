@@ -28,6 +28,7 @@
  			<p class="login" @click="handleLoginClick">已经注册？ 马上登录</p>
  			<p class="copyright">注册即代表同意享生活<a>服务条款</a>和<a>隐私条款</a></p>
   	</div>
+  	
   </div>
 </template>
 
@@ -78,12 +79,14 @@ export default {
 		border: none
 	}
 	.main {
+		display: flex;
+		flex-direction: column;
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		padding: 0.3rem 0.2rem 0;
+		padding: 0.3rem 0 0;
 		background: #a0cefb;
 	}
 	.logo {
@@ -100,7 +103,9 @@ export default {
 		text-align: center;
 	}
 	.content {
+		flex: 1;
 		text-align: center;
+		background: #a0cefb;
 	}
 	.select {
 		box-sizing: border-box;	

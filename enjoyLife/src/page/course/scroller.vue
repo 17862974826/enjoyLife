@@ -3,9 +3,9 @@
      <div class="content">
 	     <div>
 	      <swiper :options="swiper">
-	        <swiper-slide v-for="item in slider" :key="item.id">
+	        <swiper-slide v-for="items in slider" :key="items.id">
 	          <div class="banner_wrap">
-	            <img :src="item.imgUrl">
+	            <img :src="items.imgUrl">
 	          </div>
 	        </swiper-slide>
 	        <div class="swiper-pagination"  slot="pagination"></div>
@@ -15,7 +15,7 @@
 	     <div v-for="item in classify" class="inner" :key="item.id">
 	     	<h2 class="title">{{item.title}}</h2>
 			<swiper :options="swiperOption"  ref="swiper">
-		        <swiper-slide v-for="item in item.sport">
+		        <swiper-slide v-for="item in item.sport" :key="item.id">
 		          <div class="des_wrap" @click.preventDefault="handleClick(item.id)">
 		            <img :src="item.imgUrl">
 		          </div>

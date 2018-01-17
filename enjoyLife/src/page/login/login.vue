@@ -30,7 +30,7 @@
   		<div class="wrapper login" @click="handleLoginClick">登录</div>
   		<div class="wrapper more">
   			<p class="forget">忘记密码? </p>
-  			<p class="register">立即注册</p>
+  			<router-link to="/register" tag="p" class="register">立即注册</router-link>
   		</div>
   		<div class="division">
   			<p class="other_login">第三方登录</p>
@@ -41,6 +41,7 @@
   			</div>
   		</div>
   	</div>
+  	
   </div>
 </template>
 
@@ -128,8 +129,12 @@ export default {
 		right: 0;
 		bottom: 0;
 		left: 0;
-		padding: 0.3rem 0.2rem 0;
+		padding: 0.3rem 0rem 0;
 		background: #a0cefb;
+	}
+	.content {
+		background: #a0cefb;
+		padding-bottom: 0.5rem;
 	}
 	.logo {
 		width: 1.58rem;
