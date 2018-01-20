@@ -46,7 +46,7 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
   name: 'login',
   data () {
@@ -92,9 +92,17 @@ export default {
         }
         window.localStorage.user = JSON.stringify(user)
       }
+    },
+    getCourseDtaSucc (res) {
+      console.log(res)
+    },
+    getCourseDataErr () {
+      console.log(123)
     }
   },
   created () {
+    axios.get('/index/index/login').then(this.getCourseDataSucc.bind(this))
+                                   .then(this.getCourseDataErr.bind(this))
     if (window.localStorage.user) {
       const user = JSON.parse(window.localStorage.user)
       this.username = user.username

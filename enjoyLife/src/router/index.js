@@ -11,7 +11,7 @@ import register from '@/page/register/register'
 import login from '@/page/login/login'
 import start from '@/page/start/start'
 import setting from '@/page/setting/setting'
-
+import dynamicDetail from '@/page/dynamicDetail/index'
 Vue.use(Router)
 
 const router = new Router({
@@ -62,6 +62,10 @@ const router = new Router({
       path: '/setting',
       name: 'setting',
       component: setting
+    }, {
+      path: '/dynamicDetail',
+      name: 'dynamicDetail',
+      component: dynamicDetail
     }
   ]
 })
