@@ -5,6 +5,7 @@
   		<p class="enjoy">享生活</p>
   	</div>
   	<div class="content">
+  		<p class="hint">{{show}}</p>
   		<div class="wrapper">
   			<span class="iconfont icon_user">&#xe796;</span>
   			<input type="text" class="username" placeholder="请输入手机号" v-model.number="username"></input>
@@ -30,7 +31,7 @@
   		<div class="wrapper login" @click="handleLoginClick">登录</div>
   		<div class="wrapper more">
   			<p class="forget">忘记密码? </p>
-  			<p class="register">立即注册</p>
+  			<router-link to="/register" class="register" tag="p">立即注册</router-link>
   		</div>
   		<div class="division">
   			<p class="other_login">第三方登录</p>
@@ -45,7 +46,7 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
   name: 'login',
   data () {
@@ -53,7 +54,8 @@ export default {
       pwdFlag: true,
       loginFlag: false,
       username: '',
-      password: ''
+      password: '',
+      show: ''
     }
   },
   methods: {
@@ -78,9 +80,16 @@ export default {
     handleLoginClick () {
       if (this.username && this.username !== '') {
         if (this.password && this.password !== '') {
-          this.addlocalStorage()
-          this.$router.push('/index')
+          axios.post('/index/index/login', {phone: this.username, password: this.password}).then(this.handleRegisterSucc.bind(this))
         }
+      }
+    },
+    handleRegisterSucc (res) {
+      if (res.data.status) {
+        this.addlocalStorage()
+        this.$router.push('/index')
+      } else {
+        this.show = res.data.msg
       }
     },
     addlocalStorage () {
@@ -108,6 +117,13 @@ export default {
 		width: 100%;
 		height: 6rem;
 		background: #a0cefb;
+	}
+	.hint {
+		width: 5rem;
+		margin: 0 auto 0.1rem;
+		font-size: 0.22rem;
+		text-align: left;
+		color: #da6779;
 	}
 	input {
 		border: none

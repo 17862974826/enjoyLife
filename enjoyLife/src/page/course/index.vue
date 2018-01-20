@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       slider: [],
-      classify: []
+      classify: {}
     }
   },
   components: {
@@ -29,10 +29,12 @@ export default {
       res.data && (res = res.data)
       if (res) {
         this.slider = res.data.slider
-        this.classify = res.data.classify
       } else {
         this.getCourseDataErr()
       }
+    },
+    getDataSucc (res) {
+      this.classify = res.data.data
     },
     getCourseDataErr () {}
   },
@@ -40,6 +42,7 @@ export default {
   created () {
     axios.get('/static/index.json').then(this.getCourseDataSucc.bind(this))
                                    .then(this.getCourseDataErr.bind(this))
+    axios.get('/index/cage/list').then(this.getDataSucc.bind(this))
   },
 
   beforeRouteLeave (to, from, next) {

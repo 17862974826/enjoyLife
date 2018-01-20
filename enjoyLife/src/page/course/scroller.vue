@@ -11,22 +11,21 @@
 	        <div class="swiper-pagination"  slot="pagination"></div>
 	      </swiper>
 	    </div>
-
-	     <div v-for="item in classify" class="inner" :key="item.id">
-	     	<h2 class="title">{{item.title}}</h2>
+	     <div v-for="(items, key, index) in classify" class="inner" :key="index">
+	     	<h2 class="title">{{key}}</h2>
 			<swiper :options="swiperOption"  ref="swiper">
-		        <swiper-slide v-for="item in item.sport">
-		          <div class="des_wrap" @click.preventDefault="handleClick(item.id)">
-		            <img :src="item.imgUrl">
+		        <swiper-slide v-for="item in items">
+		          <div class="des_wrap" @click.preventDefault="handleClick(item.cid)">
+		            <img :src="item.pic">
 		          </div>
 		          <div class="des">
 		          	<div class="strength">
 		          		<i class="des_title">强度</i>
-		          		<span class="iconfont icon-aixin active" v-for="span in +item.strength"></span>
-		          		<span class="iconfont icon-aixin" v-for="it in 5-item.strength"></span>
+		          		<span class="iconfont active" v-for="span in item.parent">&#xe6d9;</span>
+		          		<span class="iconfont" v-for="ie in Math.abs(5 - item.parent )">&#xe6d9;</span>
 		          	</div>
 		          	<div class="person">
-		          		{{item.des}}
+		          		{{item.classname}}
 		          	</div>
 		          </div>
 		        </swiper-slide>
@@ -41,7 +40,7 @@ import BScroll from 'better-scroll'
 export default {
   name: 'scroller',
   props: {
-    classify: Array,
+    classify: Object,
     slider: Array,
     num: ''
   },

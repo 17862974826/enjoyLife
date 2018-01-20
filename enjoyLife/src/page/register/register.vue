@@ -5,15 +5,15 @@
   		<p class="enjoy">享生活</p>
   	</div>
   	<div class="content">
+  		<p v-show="hint" class="hints">{{show}}</p>
   		<select v-model="selected" class="select wrapper">
-		    <option  disabled  value="" >请选择地区</option>
-		    <option>中国大陆</option>
+		    <option  value="" >中国大陆</option>
 		    <option>香港</option>
 		    <option>澳门</option>
 		    <option>台湾</option>
  			</select>
  			<div class="wrapper">
- 				<input type="text" class="username" placeholder="请输入手机号" v-model.trim.number="username" @blur="handleUserBlur"></input>
+ 				<input type="text" class="username" placeholder="请输入手机号" v-model.trim.number="username" @blur="handleUserBlur" @focus="handleUserFocus"></input>
  				<span class="pre">+86</span>
  			</div>
  			<div class="wrapper code">
@@ -42,7 +42,9 @@ export default {
       validate: '',
       password: '',
       time: '获取验证码',
-      flag: false
+      flag: false,
+      hint: true,
+      show: ''
     }
   },
   methods: {
@@ -50,7 +52,8 @@ export default {
       const reg = /^1[3578]\d{9}$/
       if (reg.test(this.username) && this.flag) {
         this.flag = false
-        this.time = 60
+        this.time = 30
+        this.sendMessage()
         this.clear = setInterval(this.timeSlot, 1000)
       }
     },
@@ -63,18 +66,42 @@ export default {
       }
     },
     handleRegisterClick () {
-      this.$router.push({path: '/login'})
+      const pwdTest = /^\w{6,16}$/
+      if (this.username && this.password && this.validate && pwdTest.test(this.password)) {
+        axios.post('/index/index/register', {phone: this.username, password: this.password, short: this.validate}).then(this.handleRegisterSucc.bind(this))
+      } else {
+        this.show = '请输入合法的用户名或密码'
+      }
+    },
+    handleRegisterSucc (res) {
+      if (res.data.status) {
+        this.$router.push({path: '/login'})
+      } else {}
     },
     handleLoginClick () {
       this.$router.push({path: '/login'})
     },
     handleUserBlur () {
-      axios.post('/index/index/register', {
-        phone: this.username
-      }).then(this.validateUsername.bind(this))
+      const reg = /^1[3578]\d{9}$/
+      if (reg.test(this.username)) {
+        axios.post('/index/index/reg', { phone: this.username }).then(this.validateUsername.bind(this))
+      } else {
+        this.show = '用户名不合法'
+      }
+    },
+    handleUserFocus () {
+      this.flag = false
     },
     validateUsername (res) {
-    	console.log(res)	
+      if (res.data.status) {
+        this.flag = true
+        this.show = res.data.msg
+      } else {
+        this.show = res.data.msg
+      }
+    },
+    sendMessage () {
+      axios.post('/index/index/doMessage', {phone: this.username})
     }
   },
   activated () {
@@ -87,6 +114,13 @@ export default {
 <style scoped>
 	input {
 		border: none
+	}
+	.hints {
+		width: 5rem;
+		margin: 0 auto 0.1rem;
+		font-size: 0.22rem;
+		text-align: left;
+		color: #da6779;
 	}
 	.main {
 		position: absolute;

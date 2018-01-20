@@ -10,7 +10,7 @@ export default {
   methods: {
     refresh () {
       setTimeout(() => {
-        this.$router.push('/index')
+        this.$router.push('/login')
       }, 3000)
     }
   },
