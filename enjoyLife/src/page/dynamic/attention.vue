@@ -64,7 +64,8 @@
 	        initialSlide: 1,
 	        observer: true,
 	        observeParents: true,
-	        centeredSlides: true
+	        centeredSlides: true,
+	        loopAdditionalSlides: 1
 	      }
 	    }
 	  },

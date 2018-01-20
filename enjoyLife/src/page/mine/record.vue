@@ -21,7 +21,7 @@
 </script>
 <style scoped>
 	.record-wrap{
-		flex: 1;
+		height: 4rem;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;

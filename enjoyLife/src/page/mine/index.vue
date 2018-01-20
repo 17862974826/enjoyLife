@@ -1,31 +1,31 @@
 <template>
-	<div class="mine-box">
-		<div class="header border-bottom">
-			<div class="iconfont icons" @click="handleBackClick">&#xe65b;</div>
-			<div class="mine">我的</div>
-			<router-link to="/register">
-				<div class="iconfont icons">&#xe628;</div>
-			</router-link>
-		</div>
-		<div class="info">
-			<div class="info-wrap">
-				<div class="header-img">
-					<img class="user-img" :src="userInfo.imgUrl" alt="">
+		<div class="mine-box">
+			<div class="header border-bottom">
+				<div class="iconfont icons" @click="handleBackClick">&#xe65b;</div>
+				<div class="mine">我的</div>
+				<router-link to="/register">
+					<div class="iconfont icons">&#xe628;</div>
+				</router-link>
+			</div>
+			<div class="info">
+				<div class="info-wrap">
+					<div class="header-img">
+						<img class="user-img" :src="userInfo.imgUrl" alt="">
+					</div>
+					<p class="user-name">{{userInfo.name}}</p>
 				</div>
-				<p class="user-name">{{userInfo.name}}</p>
+				<div class="user-baseInfo">
+					<div>关注：{{userInfo.about}}</div>
+					<div>粉丝：{{userInfo.fin}}</div>
+					<div>动态：{{userInfo.dyn}}</div>
+				</div>
 			</div>
-			<div class="user-baseInfo">
-				<div>关注：{{userInfo.about}}</div>
-				<div>粉丝：{{userInfo.fin}}</div>
-				<div>动态：{{userInfo.dyn}}</div>
-			</div>
+			<div class="white-space"></div>
+			<main-class :classify="classify"></main-class>
+			<div class="white-space"></div>
+			<main-record></main-record>
+			<main-footer></main-footer>
 		</div>
-		<div class="white-space"></div>
-		<main-class :classify="classify"></main-class>
-		<div class="white-space"></div>
-		<main-record></main-record>
-		<main-footer></main-footer>
-	</div>
 </template>
 <script>
 	import MainClass from './class'
@@ -68,12 +68,12 @@
 </script>
 <style scoped>
 		.mine-box{
-			display: flex;
 			position: absolute;
 			left: 0;
 			top: 0;
 			bottom: 0;
 			right: 0;
+			overflow: auto;
 			flex-direction: column;
 		}
 		.header{

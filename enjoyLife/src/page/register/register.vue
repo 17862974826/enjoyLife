@@ -13,7 +13,7 @@
 		    <option>台湾</option>
  			</select>
  			<div class="wrapper">
- 				<input type="text" class="username" placeholder="请输入手机号" v-model.trim.number="username"></input>
+ 				<input type="text" class="username" placeholder="请输入手机号" v-model.trim.number="username" @blur="handleUserBlur"></input>
  				<span class="pre">+86</span>
  			</div>
  			<div class="wrapper code">
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
   name: 'register',
   data () {
@@ -41,13 +41,15 @@ export default {
       username: '',
       validate: '',
       password: '',
-      time: '获取验证码'
+      time: '获取验证码',
+      flag: false
     }
   },
   methods: {
     handleValidateClick () {
       const reg = /^1[3578]\d{9}$/
-      if (reg.test(this.username)) {
+      if (reg.test(this.username) && this.flag) {
+        this.flag = false
         this.time = 60
         this.clear = setInterval(this.timeSlot, 1000)
       }
@@ -56,6 +58,7 @@ export default {
       this.time--
       if (this.time === 0) {
         clearInterval(this.clear)
+        this.flag = true
         this.time = '获取验证码'
       }
     },
@@ -64,6 +67,14 @@ export default {
     },
     handleLoginClick () {
       this.$router.push({path: '/login'})
+    },
+    handleUserBlur () {
+      axios.post('/index/index/register', {
+        phone: this.username
+      }).then(this.validateUsername.bind(this))
+    },
+    validateUsername (res) {
+    	console.log(res)	
     }
   },
   activated () {
@@ -83,7 +94,7 @@ export default {
 		right: 0;
 		bottom: 0;
 		left: 0;
-		padding: 0.3rem 0.2rem 0;
+		padding-top: 0.3rem;
 		background: #a0cefb;
 	}
 	.logo {
@@ -100,13 +111,17 @@ export default {
 		text-align: center;
 	}
 	.content {
+		height: 9rem;
+		width: 100%;
 		text-align: center;
+		background: #a0cefb;
 	}
 	.select {
 		box-sizing: border-box;	
 		color: #83bffe;
 		border: none;
 		border-radius: 0.1rem;
+		background: #fff;
 	}
 	.wrapper {
 		position: relative;
