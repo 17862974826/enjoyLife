@@ -13,34 +13,34 @@
 		<div class="space border-topbottom"></div>
 		<div ref="wrapper" class="wrapper">
 			<ul>
-				<router-link  :to="'/detail/' + item.id"  
+				<router-link  :to="'/detail/' + item.uid"  
 								class="container border-bottom" 
 								v-for="item in dynamicData" 
-								:key="item.id"
+								:key="item.yid"
 								tag="li">
 					<div class="container-top">
 						<div class="picture container-img">
-							<img class="picture-img" :src="item.headerImg" alt="">
+							<img class="picture-img" :src="item.pic1" alt="">
 						</div>
 						<div class="container-title">
 							<p class="user-name">{{item.name}}</p>
-							<p class="user-date">{{item.date}}</p>
+							<p class="user-date">{{item.yid}}</p>
 						</div>
 					</div>
-					<p class="user-desc">{{item.desc}}</p>
+					<p class="user-desc">{{item.content}}</p>
 				<swiper :options="swiperOption">
 					<swiper-slide class="slide" 
-								  v-for="product in item.imgUrl" 
-								  :key="product.id"> 
+								  v-for="(product, index) in item.picAll" 
+								  :key="product.key"> 
 			          <div class="img-wrap">
-			            <img class="user-img" :src="product.imgurl">
+			            <img class="user-img" :src="product.value">
 			          </div>
 		       		</swiper-slide>
 		     	</swiper> 
 					<div class="container-bottom">
 						<p class="path-line">轨迹</p>
-						<p class="user-like"><span class="iconfont user-des">&#xe733;</span>132</p>
-						<p class="user-like"><span class="iconfont user-des">&#xe66b;</span>0</p>
+						<p class="user-like"><span class="iconfont user-des">&#xe733;</span>{{item.click}}</p>
+						<p class="user-like"><span class="iconfont user-des">&#xe66b;</span>{{item.gid}}</p>
 					</div>
 				</router-link>
 			</ul>

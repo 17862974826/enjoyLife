@@ -1,15 +1,15 @@
 <template>
    <div class="slider">
-     <div class="spot_wrap" v-for="items of sport">
-      <h2 class="title">{{items.title}}</h2>
+     <div class="spot_wrap" v-for="(items, key) of sport">
+      <h2 class="title">{{key}}</h2>
       <swiper :options="swiperOption" ref="swiper">
-        <swiper-slide v-for="item in items.run" :key="item.id">
+        <swiper-slide v-for="item in items" :key="item.id">
           <div class="img_wrap">
-            <img :src="item.imgUrl" class="pic">
+            <img :src="item.pic" class="pic">
           </div>
           <div class="des_wrap">
-            <h4 class="guide common">{{item.guide}}</h4>
-            <p class="des common">{{item.des}}</p>
+            <h4 class="guide common">{{item.title}}</h4>
+            <p class="des common">{{item.title}}</p>
           </div>
         </swiper-slide>
       </swiper>

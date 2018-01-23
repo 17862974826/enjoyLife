@@ -4,17 +4,17 @@
 		<div class="white-space border-bottom"></div>
 		<div class="box" ref="box">
 			<ul>
-				<router-link :to="'/detail/' + item.id" 
+				<router-link :to="'/detail/' + item.uid" 
 					class="items border-bottom" 
 					v-for="item in nearData" 
-					:key="item.id"
+					:key="item.uid"
 					tag="li">
 					<div class="img-wrap">
-						<img class="user-img" :src="item.imgUrl" alt="">
+						<img class="user-img" :src="item.pic" alt="">
 					</div>
 					<div class="userInfo">
-						<p>{{item.name}}</p>
-						<p class="user-case">{{item.desc}}</p>
+						<p>{{item.relaname}}</p>
+						<p class="user-case">{{item.content}}</p>
 					</div>
 					<div class="attach" @click.stop="handleAttClick">关注</div>
 				</router-link>

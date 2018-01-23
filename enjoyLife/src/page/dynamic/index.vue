@@ -1,5 +1,10 @@
 <template>
 	<div class="wrap">
+		<transition 
+      enter-active-class="animated hinge"
+    >
+		<div v-if="hint" class="hint">{{msg}}</div>
+		</transition>
 		<div class="header">
 			<div class="back iconfont" @click="handleBackClick">&#xe65b;</div>
 			<div class="header-con" :class="{'header-active': isError}" 
@@ -39,10 +44,12 @@
 	  },
 	  data () {
 	    return {
+	      hint: false,
 	      hotData: [],
-	      dynamicData: [],
+	      dynamic: [],
 	      nearData: [],
 	      show: true,
+	      msg: '',
 	      attentionShow: false,
 	      nearShow: false,
 	      isError: true,
@@ -50,20 +57,50 @@
 	      isBorder: false
 	    }
 	  },
-	  created () {
-	    axios.get('/static/dynamic.json').then(this.handleGetDataSucc.bind(this))
-	                                     .catch(this.handleGetDataErr.bind(this))
+	  activated () {
+	    this.getDynamicData()
+	  },
+	  computed: {
+	    dynamicData () {
+	      let arr = []
+	      this.dynamic.forEach((val) => {
+	        for (let key in val) {
+	          if (!key.indexOf('pic')) {
+	            arr.push({
+	              key: key,
+	              value: val[key]
+	            })
+	            val.picAll = arr
+	            if (arr.length % 4 < 1) {
+	              arr = []
+	            }
+	          }
+	        }
+	      })
+	      return this.dynamic
+	    }
 	  },
 	  methods: {
 	    handleGetDataSucc (res) {
 	      res.data && (res = res.data)
-	      if (res) {
-	        this.hotData = res.data.hot
-	        this.dynamicData = res.data.dynamic
-	        this.nearData = res.data.near
+	      if (res.status === 0) {
+        this.msg = res.msg
+	        this.hint = true
+	        setTimeout(() => {
+	          this.$router.push('/login')
+	          this.hint = false
+	        }, 1800)
 	      } else {
-	        this.handleGetDataErr()
-	      }
+	        this.hotData = res.hot
+	        this.dynamic = res.dynamic
+	        this.nearData = res.near
+      }
+	    },
+	    getDynamicData () {
+	      axios.get('/index/dyn/dynamic').then(this.handleGetDataSucc.bind(this))
+	                                     .catch(this.handleGetDataErr.bind(this))
+	    },
+	    getPictureAll (dynamic) {
 	    },
 	    handleGetDataErr () {},
 	    handleHotComClick () {
@@ -132,6 +169,19 @@
 		width: 1.2rem;
 		text-align: center;
 		line-height: 1rem;
+	}
+	.hint {
+		width: 1.5rem;
+		height: 0.8rem;
+		line-height: 0.8rem;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		margin-top: -0.75rem;
+		left: 50%;
+		margin-left: -0.4rem;
+		background: rgba(0, 0, 0, .5);
+		color: #fff;
 	}
 	 
 </style>

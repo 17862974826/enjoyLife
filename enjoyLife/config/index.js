@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/index': {
-            target: 'http://47.93.9.171:80',
+            target: 'http://play.gjlan.xin',
             pathRewrite: {
               '/index': '/index'
             },

@@ -1,23 +1,23 @@
 <template>
 	<div class="mainWrap" ref="mainWrap">
 		<ul>
-			<router-link  :to="'/detail/' + item.id" 
+			<router-link  :to="'/detail/' + item.yid" 
 										class="main-con border-bottom" 
-										v-for="item in hotData" 
-										:key="item.id" 
+										v-for="(item, index) in hotData" 
+										:key="item.yid" 
 										tag="li">
 			 	<div class="img-wrap">
-			 		<img class="img-img" :src="item.imgUrl" alt="">
+			 		<img class="img-img" :src="item.pic1" alt="">
 			 	</div>
 			 	<div class="main-right">
-			 		<p class="main-desc">{{item.desc}}</p>
+			 		<p class="main-desc">{{item.content}}</p>
 			 		<p class="name-desc">
-			 		  <span> {{item.name}}</span>
+			 		  <span>{{item.relaname}}</span>
 			 		  <span class="like-num">
 				 		  <i class="iconfont"  @click.stop="handleLoveClick" ref="icon">
 				 		  	&#xe733;
 				 		  </i>
-				 		  {{item.num}}
+				 		  {{item.click}}
 			 		  </span>
 			 		</p>
 			 	</div>

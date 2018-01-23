@@ -3,9 +3,7 @@
     <div class="wrap" ref="wrapper">
       <div class="content">
         <header class="header">
-          <div class="run sport"  @click="handleRunClick" :class="{active: runActive}">跑步</div>
-          <div class="talk sport" @click="handleWalkClick" :class="{active: talkActive}">健走</div>
-          <div class="ride sport" @click="handleCycleClick" :class="{active: cycActive}">骑行</div>
+          <div class="sport"  v-for="item in title" @click="handlePlayClick($event, item.cid)" ref="sport" :key="item.cid">{{item.play}}</div>
         </header>
         <transition  
           enter-active-class="animated rollIn"
@@ -15,9 +13,9 @@
         <div class="container">
           <div class="start_run">
             <div class="running">
-              <p class="target">{{showStatus.running}}</p>
+              <p class="target">0</p>
               <p class="meter">KM</p>
-                <div class="mask">{{showStatus.mask}}</div>
+                <div class="mask">{{showStatus}}</div>
             </div>
             <div class="hint">请正确佩戴手机</div>
           </div>
@@ -27,11 +25,11 @@
               <img src="/static/images/indexImg/sport_left.jpg">
               <img src="/static/images/indexImg/sport_right.jpg">
             </div>
-            <div class="btn">{{showStatus.title}}</div>
+            <div class="btn">PLAY {{showStatus}}</div>
           </div>
         </div>
 
-      <slider :sport="sport"></slider>
+      <slider :sport="msg"></slider>
       </div>
     </div>
 
@@ -53,11 +51,10 @@ export default {
   },
   data () {
     return {
-      running: '',
-      walking: '',
-      cycling: '',
-      showStatus: '',
+      title: [],
+      showStatus: 'RUNNING',
       sport: [],
+      msg: [],
       runActive: true,
       talkActive: false,
       cycActive: false
@@ -65,43 +62,40 @@ export default {
   },
   methods: {
     getHomeDataSucc (res) {
-      res.data.data && (res = res.data.data)
-      res.run && (this.running = res.run)
-      res.cycling && (this.cycling = res.cycling)
-      res.walking && (this.walking = res.walking)
-      this.sport && (this.sport = res.run.sport)
-      this.showStatus = this.running
+      console.log(res)
+      res.data && (res = res.data)
+      if (res.big) {
+        this.title = res.big
+      }
+      this.$nextTick(() => {
+        this.$refs.sport[0].className = 'sport active'
+      })
     },
     getHomeDataErr () {},
-    handleCycleClick () {
-      this.showStatus = this.cycling
-      this.sport = this.cycling.sport
-      this.runActive = false
-      this.talkActive = false
-      this.cycActive = true
+    handlePlayClick (e, id) {
+      this.$refs.sport.forEach((val) => {
+        val.className = 'sport'
+      })
+      e.target.className = 'sport active'
+      this.showStatus = e.target.innerHTML === '健走' ? 'WALKING' : e.target.innerHTML === '跑步' ? 'RUNNING' : 'CYCLING'
+      this.getIndexStrategy(id)
     },
-    handleWalkClick () {
-      this.showStatus = this.walking
-      this.sport = this.walking.sport
-      this.runActive = false
-      this.talkActive = true
-      this.cycActive = false
+    getIndexStrategy (id) {
+      axios.post('/index/index/strategy', {cid: id}).then(this.getIndexStrategySucc.bind(this))
     },
-    handleRunClick () {
-      this.showStatus = this.running
-      this.sport = this.running.sport
-      this.runActive = true
-      this.talkActive = false
-      this.cycActive = false
+    getIndexStrategySucc (res) {
+      res.data.msg && (res = res.data.msg)
+      this.msg = res
     }
   },
   mounted () {
+    this.getIndexStrategy(1)
     this.scroll = new BScroll(this.$refs.wrapper, {
       click: true
     })
   },
   created () {
-    axios.get('/static/home.json').then(this.getHomeDataSucc.bind(this))
+    axios.get('/index/index/sports').then(this.getHomeDataSucc.bind(this))
                                    .then(this.getHomeDataErr.bind(this))
   },
   activated () {
