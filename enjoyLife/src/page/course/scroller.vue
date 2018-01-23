@@ -4,8 +4,8 @@
 	     <div>
 	      <swiper :options="swiper">
 	        <swiper-slide v-for="item in slider" :key="item.id">
-	          <div class="banner_wrap">
-	            <img :src="item.imgUrl">
+	          <div class="banner_wrap" @click="handleBannerClick(item.url)">
+	            <img :src="item.pic">
 	          </div>
 	        </swiper-slide>
 	        <div class="swiper-pagination"  slot="pagination"></div>
@@ -76,6 +76,9 @@ export default {
       this.$refs.swiper.forEach((value) => {
         value.swiper.slideTo(0)
       })
+    },
+    handleBannerClick (url) {
+      window.open(url)
     }
   },
   mounted () {

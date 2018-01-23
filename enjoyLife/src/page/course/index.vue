@@ -27,10 +27,8 @@ export default {
   methods: {
     getCourseDataSucc (res) {
       res.data && (res = res.data)
-      if (res) {
-        this.slider = res.data.slider
-      } else {
-        this.getCourseDataErr()
+      if (res.status) {
+        this.slider = res.msg
       }
     },
     getDataSucc (res) {
@@ -40,7 +38,7 @@ export default {
   },
 
   created () {
-    axios.get('/static/index.json').then(this.getCourseDataSucc.bind(this))
+    axios.get('/index/cage/carousel').then(this.getCourseDataSucc.bind(this))
                                    .then(this.getCourseDataErr.bind(this))
     axios.get('/index/cage/list').then(this.getDataSucc.bind(this))
   },

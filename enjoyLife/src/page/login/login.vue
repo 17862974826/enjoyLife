@@ -36,9 +36,7 @@
   		<div class="division">
   			<p class="other_login">第三方登录</p>
   			<div class="icon">
-  				<span class="iconfont inner">&#xe602;</span>
-  				<span class="iconfont inner">&#xe709;</span>
-  				<span class="iconfont inner last">&#xe63e;</span>
+  				<span class="iconfont inner" id="hzy_fast_login"></span>
   			</div>
   		</div>
   	</div>
@@ -259,9 +257,11 @@ export default {
 		padding: 0.5rem 0 0;
 	}
 	.inner {
-		font-size: 0.42rem;
 		color: #fff;
-		margin-right: 0.8rem;
+		text-align: center;
+	}
+	.inner a {
+		float: left;
 	}
 	.last {
 		margin-right: 0rem;
