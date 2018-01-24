@@ -59,7 +59,7 @@
 	    })
 	  },
 	  created () {
-	    axios.get('/static/mine.json').then(this.handleGetInfoSucc.bind(this))
+	    axios.get('/index/info/list').then(this.handleGetInfoSucc.bind(this))
 	                                  .catch(this.handleGetInfoErr.bind(this))
 	  },
 	  methods: {

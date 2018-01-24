@@ -1,13 +1,15 @@
 <template>
   <div class="content">
-    <h2 class="title">{{comment.title}}</h2>
-    <div class="wrapper" v-for="item in comment.content">
+    <h2 class="title">评论</h2>
+    <div class="wrapper" v-for="item in comment" :key="item.id">
       <div class="comment">
-        <div class="icon"></div>
+        <div class="icon">
+          <img :src="item.pic">
+        </div>
         <div class="des_wrap">
-          <p class="username">{{item.username}}</p>
-          <p class="time">{{item.timer}}</p>
-          <p class="status">{{item.des}}</p>
+          <p class="username">{{item.relaname || '匿名'}}</p>
+          <p class="time">{{item.time}}</p>
+          <p class="status">{{item.content || '打卡成功'}}</p>
         </div>
         <span class="iconfont">&#xe733;</span>
       </div>
@@ -16,26 +18,9 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'comment',
-  data () {
-    return {
-      comment: ''
-    }
-  },
-  methods: {
-    getTrainDataSucc (res) {
-      res.data.data && (res = res.data.data)
-      res.comment && (this.comment = res.comment)
-      console.log(this.comment)
-    },
-    getTrainDataErr () {}
-  },
-  created () {
-    axios.get('/static/train.json').then(this.getTrainDataSucc.bind(this))
-                                   .then(this.getTrainDataErr.bind(this))
-  }
+  props: ['comment']
 }
 </script>
 
@@ -74,8 +59,11 @@ export default {
     height: 0.6rem;
     margin-right: 0.1rem;
     border-radius: 50%;
-    background: url(/static/images/sportDetail/plan.jpg);
-    background-size: cover;
+  }
+  .icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
   }
   .username {
     font-size: 0.24rem;

@@ -1,10 +1,10 @@
 <template>
   <div class="content">
-    <h2 class="title">{{train.title}}</h2>
+    <h2 class="title">{{train.classname}}</h2>
     <p class="des">{{train.des}}</p>
     <div class="wrapper">
       <em class="strength">强度</em>
-      <span class="iconfont icon-aixin active" v-for="item in train.strength"></span>
+      <span class="iconfont icon-aixin active" v-for="item in train.parent"></span>
       <span class="iconfont icon-aixin" v-for="item in num"></span>
     </div>
     </div>
@@ -30,8 +30,8 @@ export default {
   },
   watch: {
     train () {
-      if (this.train.strength) {
-        this.num = 5 - this.train.strength
+      if (this.train.parent) {
+        this.num = 5 - this.train.parent
       }
     }
   }

@@ -1,17 +1,19 @@
 <template>
   <div>
   	<div class="container">
-  		<div class="banner" :style="bannerShow.imgUrl">
+  		<div class="banner">
+        <img :src="train.pic">
         <router-link to="/course" class="back iconfont" tag="span">&#xe65b;</router-link>
   	 </div>
 			<train :train="train"></train>
       <show-self :showSelf="showSelf" :title="title"></show-self>
-      <comment></comment>
+      <comment :comment="comment"></comment>
       <div class="footer">
-        <input class="publish" type="text" placeholder="说些什么吧" />
-        <p class="des">发布</p>
+        <input class="publish" type="text" placeholder="说些什么吧" v-model="publish"/>
+        <p class="des" @click="handlePublishSubmit">发布</p>
         <p class="sign iconfont">&#xe733;</p>
       </div>
+      <div class="up"></div>
   	</div>
   </div>
 </template>
@@ -27,12 +29,13 @@ export default {
   data () {
     return {
       train: [],
-      list: [],
+      publish: '',
       showSelf: [],
       show: [],
-      banner: {},
-      bannerShow: {},
-      title: ''
+      banner: '',
+      title: '',
+      comment: [],
+      cid: ''
     }
   },
   components: {
@@ -40,42 +43,32 @@ export default {
     showSelf,
     comment
   },
-  watch: {
-    '$route' () {
-      this.train = this.disposeData({}, this.list)
-      this.showSelf = this.disposeData({}, this.show.content)
-      this.bannerShow = this.disposeData({}, this.banner)
-    }
-  },
   methods: {
     getTrainDataSucc (res) {
-      res.data.data && (res = res.data.data)
-      res.banner && (this.banner = res.banner)
-      res.train && (this.list = res.train)
-      res.show && (this.show = res.show)
-      this.title = this.show.title
-      this.train = this.disposeData({}, this.list)
-      this.showSelf = this.disposeData({}, this.show.content)
-      this.bannerShow = this.disposeData({}, this.banner)
+      res.data && (res = res.data)
+      this.comment = res.msg
+      this.cid = res.res[0].cid
+      this.$nextTick(() => {
+        this.train = res.res[0]
+      })
     },
-    disposeData (fresh, original) {
-      for (let key in original) {
-        if (key === this.id) {
-          fresh = original[key]
-        }
+    handlePublishSubmit () {
+      axios.post('/index/cage/dopost', {cid: this.cid, content: this.publish})
+            .then(this.handlePublishSubmitSucc.bind(this))
+            .then(this.handlePublishSubmitErr.bind(this))
+    },
+    handlePublishSubmitSucc (res) {
+      if (res.status) {
+        this.publish = ''
       }
-      return fresh
     },
-    getTrainDataErr () {}
-  },
-  created () {
-    axios.get('/static/train.json').then(this.getTrainDataSucc.bind(this))
-                                   .then(this.getTrainDataErr.bind(this))
+    getTrainDataErr () {},
+    handlePublishSubmitErr () {}
   },
   activated () {
-    this.train = this.disposeData({}, this.list)
-    this.showSelf = this.disposeData({}, this.show.content)
-    this.bannerShow = this.disposeData({}, this.banner)
+    axios.post('/index/cage/comment', {cid: this.$route.params})
+          .then(this.getTrainDataSucc.bind(this))
+           .then(this.getTrainDataErr.bind(this))
   }
 }
 </script>
@@ -83,16 +76,23 @@ export default {
 <style scoped>
 	.container {
 		background: #ebf0f2;
-    padding-bottom: 0.98rem;
 	}
+  .up {
+    width: 100%;
+    height: 0.96rem;
+    background: #fff;
+  }
 	.banner {
     width: 100%;
     position: relative;
     height:0;
-    padding-bottom: 43%;
+    padding-bottom: 52%;
     overflow: hidden;
     background-size: cover;
 	}
+  .banner img {
+    width: 100%;
+  }
   .back {
     font-size: 0.33rem;
     position: absolute;
