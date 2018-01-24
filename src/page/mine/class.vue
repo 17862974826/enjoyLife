@@ -23,7 +23,7 @@
         level: '1',
         percent: '0',
         totalTime: '0',
-        classfiy: 409,
+        classfiy: 0,
         letterLevel: 'A'
       }
     },
@@ -34,7 +34,7 @@
     watch: {
       grade () {
         if (this.grade) {
-          // this.classfiy = this.grade
+          this.classfiy = this.grade
           this.classfiy = '' + this.classfiy
           this.percent = this.classfiy.substr(this.classfiy.length - 1)
           this.level = this.classfiy.substr(0, 1)
