@@ -1,0 +1,204 @@
+{
+	"ret": true,
+	"data": {
+		"slider": [
+		  {
+	        "id": "0001",
+	        "imgUrl": "/static/images/course/banner.png"
+	      }, {
+	        "id": "0002",
+	        "imgUrl": "/static/images/course/banner1.jpg"
+	      }, {
+	       "id": "0003",
+	       "imgUrl": "/static/images/course/banner2.png"
+	      }
+		],
+		"classify": [
+			{	
+				"id": "class01",
+				"title": "新手入门",
+				"sport": [{
+					"id": "entry1",
+					"imgUrl": "/static/images/course/entry1.jpg",
+					"strength": "5",
+					"des": "1025人训练"
+					},{
+					"id": "entry2",
+					"imgUrl": "/static/images/course/entry2.jpg",
+					"strength": "1",
+					"des": "2325人训练"
+					},{
+					"id": "entry3",
+					"imgUrl": "/static/images/course/entry3.jpg",
+					"strength": "1",
+					"des": "3025人训练"
+					},{
+					"id": "entry4",
+					"imgUrl": "/static/images/course/entry4.jpg",
+					"strength": "1",
+					"des": "125人训练"
+					}]
+			},
+			{	
+				"id": "class02",
+				"title": "热身拉伸",
+				"sport": [{
+					"id": "hot1",
+					"imgUrl": "/static/images/course/hot1.jpg",
+					"strength": "1",
+					"des": "1025人训练"
+					},{
+					"id": "hot2",
+					"imgUrl": "/static/images/course/hot2.jpg",
+					"strength": "1",
+					"des": "2325人训练"
+					},{
+					"id": "hot3",
+					"imgUrl": "/static/images/course/hot3.jpg",
+					"strength": "1",
+					"des": "3025人训练"
+					},{
+					"id": "hot4",
+					"imgUrl": "/static/images/course/hot4.jpg",
+					"strength": "1",
+					"des": "125人训练"
+					},{
+					"id": "hot5",
+					"imgUrl": "/static/images/course/hot5.jpg",
+					"strength": "3",
+					"des": "125人训练"
+					}]
+			},
+			{	
+				"id": "class03",
+				"title": "减脂入门",
+				"sport": [{
+					"id": "reduce1",
+					"imgUrl": "/static/images/course/reduce1.jpg",
+					"strength": "1",
+					"des": "1025人训练"
+					},{
+					"id": "reduce2",
+					"imgUrl": "/static/images/course/reduce2.jpg",
+					"strength": "1",
+					"des": "2325人训练"
+					},{
+					"id": "reduce3",
+					"imgUrl": "/static/images/course/reduce3.jpg",
+					"strength": "1",
+					"des": "3025人训练"
+					},{
+					"id": "reduce4",
+					"imgUrl": "/static/images/course/reduce4.jpg",
+					"strength": "1",
+					"des": "125人训练"
+					}]
+			},
+			{	
+				"id": "class04",
+				"title": "跑步能力提升",
+				"sport": [{
+					"id": "run1",
+					"imgUrl": "/static/images/course/run1.jpg",
+					"strength": "1",
+					"des": "1025人训练"
+					},{
+					"id": "run2",
+					"imgUrl": "/static/images/course/run2.jpg",
+					"strength": "1",
+					"des": "2325人训练"
+					},{
+					"id": "run3",
+					"imgUrl": "/static/images/course/run3.jpg",
+					"strength": "1",
+					"des": "3025人训练"
+					},{
+					"id": "run4",
+					"imgUrl": "/static/images/course/run4.jpg",
+					"strength": "1",
+					"des": "125人训练"
+					}]
+			},
+			{	
+				"id": "class05",
+				"title": "增肌训练",
+				"sport": [{
+					"id": "add1",
+					"imgUrl": "/static/images/course/add1.jpg",
+					"strength": "1",
+					"des": "1025人训练"
+					},{
+					"id": "add2",
+					"imgUrl": "/static/images/course/add2.jpg",
+					"strength": "1",
+					"des": "2325人训练"
+					},{
+					"id": "add3",
+					"imgUrl": "/static/images/course/add3.jpg",
+					"strength": "1",
+					"des": "3025人训练"
+					},{
+					"id": "add4",
+					"imgUrl": "/static/images/course/add4.jpg",
+					"strength": "1",
+					"des": "125人训练"
+					},{
+					"id": "add5",
+					"imgUrl": "/static/images/course/add5.jpg",
+					"strength": "1",
+					"des": "125人训练"
+					}]
+			},
+			{	
+				"id": "class06",
+				"title": "瑜伽入门教程",
+				"sport": [{
+					"id": "yoga1",
+					"imgUrl": "/static/images/course/yoga1.jpg",
+					"strength": "1",
+					"des": "1025人训练"
+					},{
+					"id": "yoga2",
+					"imgUrl": "/static/images/course/yoga2.jpg",
+					"strength": "1",
+					"des": "2325人训练"
+					},{
+					"id": "yoga3",
+					"imgUrl": "/static/images/course/yoga3.jpg",
+					"strength": "1",
+					"des": "3025人训练"
+					},{
+					"id": "yoga4",
+					"imgUrl": "/static/images/course/yoga4.jpg",
+					"strength": "1",
+					"des": "125人训练"
+					}]
+			},
+			{	
+				"id": "class07",
+				"title": "亚健康改善",
+				"sport": [{
+					"id": "health1",
+					"imgUrl": "/static/images/course/health1.jpg",
+					"strength": "3",
+					"des": "1025人训练"
+					},{
+					"id": "health2",
+					"imgUrl": "/static/images/course/health2.jpg",
+					"strength": "1",
+					"des": "2325人训练"
+					},{
+					"id": "health3",
+					"imgUrl": "/static/images/course/health3.jpg",
+					"strength": "1",
+					"des": "3025人训练"
+					},{
+					"id": "health4",
+					"imgUrl": "/static/images/course/health4.jpg",
+					"strength": "1",
+					"des": "125人训练"
+					}]
+			}
+		]
+	}
+}

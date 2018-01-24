@@ -1,0 +1,69 @@
+{
+	"ret": true,
+	"data": {
+		"banner":{
+			"entry1":{
+				"id": "b0009",
+				"imgUrl": "background-image:url(/static/images/course/entry1.jpg)"
+			}
+		},
+		"train":{
+			"entry1": {
+			"id": "t001",
+			"title": "零基础徒手减脂",
+			"des": "最简单的徒手训练，兼顾全身循环，心肺刺激以及肌肉提升，非常适合于零基础的健身者训练，提高减脂训练",
+			"strength": "1"
+			}
+		},
+		"show": {
+			"title": "训练计划",
+			"content": {
+				"entry1": [{
+				"id": "show001",
+				"des": "前后交叉小跳",
+				"num": "20次",
+				"imgUrl": "background-image: url(/static/images/sportDetail/plan.jpg);"
+				},{
+				"id": "show002",
+				"des": "前后交叉小跳",
+				"num": "20次",
+				"imgUrl": "background-image: url(/static/images/sportDetail/plan.jpg);"
+				},{
+				"id": "show003",
+				"des": "前后交叉小跳",
+				"num": "20次",
+				"imgUrl": "background-image: url(/static/images/sportDetail/plan.jpg);"
+				},{
+				"id": "show004",
+				"des": "前后交叉小跳",
+				"num": "20次",
+				"imgUrl": "background-image: url(/static/images/sportDetail/plan.jpg);"
+				}]
+			}
+		},
+		"comment": {
+			"title": "评论",
+			"content": [{
+				"imgUrl": "/static/images/sportDetail/plan.jpg)",
+				"username": "小米粥",
+				"timer": "10分钟前",
+				"des": "今日训练完成" 
+			},{
+				"imgUrl": "/static/images/sportDetail/plan.jpg)",
+				"username": "小米粥",
+				"timer": "10分钟前",
+				"des": "今日训练完成" 
+			},{
+				"imgUrl": "/static/images/sportDetail/plan.jpg)",
+				"username": "小米粥",
+				"timer": "10分钟前",
+				"des": "今日训练完成" 
+			},{
+				"imgUrl": "/static/images/sportDetail/plan.jpg)",
+				"username": "小米粥",
+				"timer": "10分钟前",
+				"des": "今日训练完成" 
+			}]
+		}
+	}
+}
