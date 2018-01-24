@@ -14,7 +14,7 @@
 	     <div v-for="(items, key, index) in classify" class="inner" :key="index">
 	     	<h2 class="title">{{key}}</h2>
 			<swiper :options="swiperOption"  ref="swiper">
-		        <swiper-slide v-for="item in items">
+		        <swiper-slide v-for="item in items" :key="item.id">
 		          <div class="des_wrap" @click.preventDefault="handleClick(item.cid)">
 		            <img :src="item.pic">
 		          </div>
