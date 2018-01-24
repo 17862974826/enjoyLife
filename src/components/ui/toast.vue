@@ -22,6 +22,9 @@ export default {
 		width: 3rem;
 		line-height: 0.88rem;
 		text-align: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		color: #fff;
 		background: #60adfe;
 	}

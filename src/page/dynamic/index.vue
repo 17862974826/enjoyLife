@@ -1,5 +1,6 @@
 <template>
 	<div class="wrap">
+		<toast :msg="errMsg"></toast>
 		<transition 
       enter-active-class="animated hinge"
     >
@@ -13,7 +14,7 @@
 				 @click="handleAttentionClick">关注</div>
 			<div class="header-con" :class="{'header-active': isBorder}"
 				 @click="handleNearClick">附近</div>
-			<router-link to="/register">
+			<router-link to="/publish">
 				<div class="search iconfont">&#xe628;</div>
 			</router-link>
 		</div>
@@ -34,13 +35,15 @@
 	import dynamicNear from './near'
 	import dynamicFooter from 'components/common/footer'
 	import axios from 'axios'
+	import toast from 'components/ui/toast'
 	export default {
 	  name: 'dynamic',
 	  components: {
 	    dynamicMain,
 	    dynamicAttention,
 	    dynamicNear,
-	    dynamicFooter
+	    dynamicFooter,
+	    toast
 	  },
 	  data () {
 	    return {
@@ -50,6 +53,7 @@
 	      nearData: [],
 	      show: true,
 	      msg: '',
+	      errMsg: '',
 	      attentionShow: false,
 	      nearShow: false,
 	      isError: true,
@@ -90,6 +94,8 @@
 	          this.$router.push('/login')
 	          this.hint = false
 	        }, 1800)
+	      } else if (res.status === 'undefined') {
+	        this.errMsg = '请重新登录'
 	      } else {
 	        this.hotData = res.hot
 	        this.dynamic = res.dynamic
@@ -102,7 +108,8 @@
 	    },
 	    getPictureAll (dynamic) {
 	    },
-	    handleGetDataErr () {},
+	    handleGetDataErr () {
+	    },
 	    handleHotComClick () {
 	      this.show = true
 	      this.isError = true
@@ -146,7 +153,8 @@
 	.header{
 		display: flex;
 		width: 100%;
-		height: 1.2rem;
+		height: 0.88rem;
+		padding-top: 0.4rem;
 		color: #333;
 		background: #fff;
 	}
@@ -157,10 +165,10 @@
 	}
 	.header-con{
 		flex: 1;
-		line-height: 1.2rem;
+		line-height: 0.88rem;
 		width: .8rem;
 		text-align: center;
-		font-size: .34rem;
+		font-size: .2rem;
 	}
 	.header-active{
 		border-bottom: 3px solid #60adfe;

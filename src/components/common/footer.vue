@@ -32,12 +32,7 @@
 
 <script>
 export default {
-  name: 'course-footer',
-  data () {
-    return {
-
-    }
-  }
+  name: 'course-footer'
 }
 </script>
 
@@ -45,7 +40,7 @@ export default {
 <style scoped>
 	.wrapper {
 		display: flex;
-		height: 1rem;
+		height: 0.98rem;
 		background: #fff;
 		justify-content: space-around;
 		align-items: center;
@@ -57,10 +52,10 @@ export default {
 		color: #666;
 	}
 	.footer-icons{
-		font-size: .34rem;
+		font-size: .2rem;
 	}
 	.footer-item {
-		font-size: 0.28rem;
+		font-size: 0.2rem;
 	}
 	.router-link-active .footer {
 		color: #60adfe;

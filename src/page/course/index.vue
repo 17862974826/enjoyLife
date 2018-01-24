@@ -66,12 +66,12 @@ export default {
     background: #ddd;
   }
   .header {
-    height: 1.29rem;
-    line-height: 0.89rem;
+    height: 1.28rem;
+    line-height: 0.88rem;
     border-bottom: 1px solid #a5a5a6;
     padding-top: 0.4rem;
     text-align: center;
-    font-size: 0.3rem;
+    font-size: 0.2rem;
     color: #b5b5b6;
     background: #fff;
     box-sizing: border-box;

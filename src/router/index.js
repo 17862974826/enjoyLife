@@ -8,8 +8,8 @@ import Index from '@/page/index/index'
 import detail from '@/page/sportDetail/detail'
 import action from '@/page/actionVideo/action'
 import register from '@/page/register/register'
-// import login from '@/page/login/login'
 import start from '@/page/start/start'
+import publish from '@/page/publish/publish'
 
 Vue.use(Router)
 
@@ -57,6 +57,10 @@ const router = new Router({
       path: '/',
       name: 'start',
       component: start
+    }, {
+      path: '/publish',
+      name: publish,
+      component: publish
     }
   ]
 })

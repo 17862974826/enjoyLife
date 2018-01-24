@@ -123,7 +123,7 @@ export default {
   .header {
     display: flex;
     position: relative;
-    height: 1.3rem;
+    height: 1.28rem;
     padding: 0.4rem 0.2rem 0;
     box-sizing: border-box;
     background: #fff;
@@ -139,8 +139,8 @@ export default {
   .sport {
     flex: 1;
     margin: 0 0.3rem;
-    line-height: 0.9rem;
-    font-size: 0.3rem;
+    line-height: 0.88rem;
+    font-size: 0.2rem;
     text-align: center;
     color: #5c5c5c;
     font-weight: 700;
