@@ -1,6 +1,7 @@
 <template>
   <div>
   	<div class="container">
+      <toast :msg="msg" v-show="toast"></toast>
   		<div class="banner">
         <img :src="train.pic">
         <router-link to="/course" class="back iconfont" tag="span">&#xe65b;</router-link>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import toast from 'components/ui/toast'
 import train from './train'
 import showSelf from './showSelf'
 import comment from './comment'
@@ -35,13 +37,16 @@ export default {
       banner: '',
       title: '',
       comment: [],
-      cid: ''
+      cid: '',
+      toast: true,
+      msg: ''
     }
   },
   components: {
     train,
     showSelf,
-    comment
+    comment,
+    toast
   },
   methods: {
     getTrainDataSucc (res) {
@@ -52,23 +57,38 @@ export default {
         this.train = res.res[0]
       })
     },
+    getSportData () {
+      axios.post('/index/cage/comment', {cid: this.$route.params})
+          .then(this.getTrainDataSucc.bind(this))
+           .then(this.getTrainDataErr.bind(this))
+    },
     handlePublishSubmit () {
       axios.post('/index/cage/dopost', {cid: this.cid, content: this.publish})
             .then(this.handlePublishSubmitSucc.bind(this))
             .then(this.handlePublishSubmitErr.bind(this))
     },
     handlePublishSubmitSucc (res) {
-      if (res.status) {
+      if (res.data.status) {
         this.publish = ''
+        this.msg = res.data.msg
+        this.toast = true
+        setTimeout(() => {
+          this.toast = false
+          this.getSportData()
+        }, 1200)
+      } else {
+        this.msg = res.data.msg
+        this.toast = true
+        setTimeout(() => {
+          this.toast = false
+        }, 1200)
       }
     },
     getTrainDataErr () {},
     handlePublishSubmitErr () {}
   },
   activated () {
-    axios.post('/index/cage/comment', {cid: this.$route.params})
-          .then(this.getTrainDataSucc.bind(this))
-           .then(this.getTrainDataErr.bind(this))
+    this.getSportData()
   }
 }
 </script>

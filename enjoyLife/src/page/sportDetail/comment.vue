@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'comment',
   props: ['comment']
@@ -41,6 +42,10 @@ export default {
     width: 100%;
     padding: 0.2rem 0 0 0.2rem;
     box-sizing: border-box;
+  }
+  .des_wrap {
+    flex: 1;
+    overflow: hidden;
   }
   .wrapper {
     position: relative;
@@ -75,8 +80,12 @@ export default {
     color: #b9b9b9;
   }
   .status {
+    width: 100%;
     font-size: 0.23rem;
     color: #7a7a7a;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   .iconfont {
     position: absolute;

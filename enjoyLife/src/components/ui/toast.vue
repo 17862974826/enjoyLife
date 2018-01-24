@@ -1,27 +1,30 @@
 <template>
-   <div class="toast">
-   		该功能暂未开放
-   </div>
+   <div class="toast">{{msg}}</div>
 </template>
 
 <script>
 
 export default {
-  name: 'toast'
+  name: 'toast',
+  props: ['msg']
 }
 </script>
 
 
 <style scoped>
 	.toast {
-		position: absolute;
+		position: fixed;
 		left: 50%;
-		top: 1.8rem;
+		top: 50%;
 		z-index: 2;
-		margin-left: -2rem;
-		width: 4rem;
+		margin-left: -1.5rem;
+		margin-top: -0.44rem;
+		width: 3rem;
 		line-height: 0.88rem;
 		text-align: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		color: #fff;
 		background: #60adfe;
 	}

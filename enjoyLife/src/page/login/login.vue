@@ -100,12 +100,21 @@ export default {
       }
     }
   },
-  created () {
+  mounted () {
+    let script = document.createElement('script')
+    script.src = 'http://open.51094.com/user/myscript/15a661964971d2.html'
+    document.body.appendChild(script)
     if (window.localStorage.user) {
       const user = JSON.parse(window.localStorage.user)
       this.username = user.username
       this.password = user.password
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    if (from.name === 'start') {
+      window.location.reload()
+    }
+    next()
   }
 }
 </script>
