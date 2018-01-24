@@ -23,8 +23,9 @@
         level: '1',
         percent: '0',
         totalTime: '0',
-        classfiy: 0,
-        letterLevel: 'A'
+        letterLevel: 'A',
+        classfiy: 0
+       
       }
     },
     props: {
