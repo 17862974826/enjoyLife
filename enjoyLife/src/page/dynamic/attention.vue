@@ -39,8 +39,8 @@
 		     	</swiper> 
 					<div class="container-bottom">
 						<p class="path-line">轨迹</p>
-						<p class="user-like"><span class="iconfont user-des">&#xe733;</span>{{item.click}}</p>
-						<p class="user-like"><span class="iconfont user-des">&#xe66b;</span>{{item.gid}}</p>
+						<p class="user-like" @click.stop="handlelikeClick(item.yid)"><span class="iconfont user-des">&#xe733;</span>{{item.click}}</p>
+						<p class="user-like" @click.stop="handleCollectionClick(item.yid)"><span class="iconfont user-des">&#xe66b;</span>{{item.gid}}</p>
 					</div>
 				</router-link>
 			</ul>
@@ -49,37 +49,76 @@
 </template>
 
 <script>
-	import BScroll from 'better-scroll'
-	export default {
-	  name: 'dynamic-attention',
-	  props: {
-	    dynamicData: Array
-	  },
-	  data () {
-	    return {
-	      swiperOption: {
-	        loop: true,
-	        slidesPerView: 2.5,
-	        spaceBetween: 30,
-	        initialSlide: 1,
-	        observer: true,
-	        observeParents: true,
-	        centeredSlides: true,
-	        loopAdditionalSlides: 1
-	      }
-	    }
-	  },
-	  mounted () {
-	    this.$nextTick(() => {
-	      this.scroll = new BScroll(this.$refs.wrapper)
-	    })
-	  },
-	  methods: {
-	    handleAttClick (e) {
-	      e.target.innerHTML = '已关注'
-	    }
-	  }
-	}
+import BScroll from 'better-scroll'
+import axios from 'axios'
+export default {
+  name: 'dynamic-attention',
+  props: {
+    dynamicData: Array
+  },
+  data () {
+    return {
+      swiperOption: {
+        loop: true,
+        slidesPerView: 2.5,
+        spaceBetween: 30,
+        initialSlide: 1,
+        observer: true,
+        observeParents: true,
+        centeredSlides: true,
+        loopAdditionalSlides: 1
+      }
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper)
+    })
+  },
+  methods: {
+    handleAttClick (e) {
+      e.target.innerHTML = '已关注'
+    },
+    handlelikeClick (id) {
+      axios.post('/index/dyn/click', {yid: id})
+           .then(this.handleClickLikeSucc.bind(this))
+           .catch(this.handleClickLikeErr.bind(this))
+    },
+    handleClickLikeSucc (res) {
+      res.data && (res = res.data)
+      if (res.status === 0) {
+        this.$emit('change', {
+          msg: res.msg
+        })
+      } else {
+        this.$emit('change', {
+          msg: res.msg,
+          flag: true
+        })
+      }
+    },
+    handleCollectionClick (id) {
+      axios.post('/index/dyn/collect', {yid: id})
+           .then(this.handleCollectionClickSucc.bind(this))
+           .catch(this.handleCollectionClickErr.bind(this))
+    },
+    handleCollectionClickSucc (res) {
+      res.data && (res = res.data)
+      if (res.status === 0) {
+        this.$emit('collect', {
+          msg: res.msg
+        })
+      } else {
+        this.$emit('collect', {
+          msg: res.msg,
+          flag: true
+        })
+      }
+    },
+    handleClickLikeErr () {},
+    handleCollectionClickErr () {}
+  }
+}
 </script>
 <style scoped>
 	.slide{

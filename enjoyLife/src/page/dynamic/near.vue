@@ -16,7 +16,7 @@
 						<p>{{item.relaname}}</p>
 						<p class="user-case">{{item.content}}</p>
 					</div>
-					<div class="attach" @click.stop="handleAttClick">关注</div>
+					<div class="attach" @click.stop="handleAttClick($event, item.uid)">关注</div>
 				</router-link>
 			</ul>
 		</div>
@@ -24,23 +24,42 @@
 </template>
 
 <script>
-	import BScroll from 'better-scroll'
-	export default {
-	  name: 'dynamic-near',
-	  props: {
-	    nearData: Array
-	  },
-	  mounted () {
-	    this.$nextTick(() => {
-	      this.scroll = new BScroll(this.$refs.box)
-	    })
-	  },
-	  methods: {
-	    handleAttClick (e) {
-	      e.target.innerHTML = '已关注'
-	    }
-	  }
-	}
+import BScroll from 'better-scroll'
+import axios from 'axios'
+export default {
+  name: 'dynamic-near',
+  props: {
+    nearData: Array
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.box)
+    })
+  },
+  methods: {
+    handleAttentionClick (e, id) {
+      axios.post('/index/index/guanz', {uid: id})
+           .then(this.handleAttentionClickSucc.bind(this, e))
+           .catch(this.handleAttentionClickErr.bind(this))
+    },
+    handleAttentionClickSucc (e, res) {
+      res.data && (res = res.data)
+      if (res.status === 0) {
+        this.$emit('change', {
+          msg: res.msg
+        })
+        e.target.innerHTML = '已关注'
+      } else {
+        e.target.innerHTML = '已关注'
+        this.$emit('change')
+      }
+    },
+    handleAttentionClickErr () {},
+    handleAttClick (e, id) {
+      this.handleAttentionClick(e, id)
+    }
+  }
+}
 </script>
 <style scoped>
 	.near{

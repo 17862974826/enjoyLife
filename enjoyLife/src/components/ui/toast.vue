@@ -17,9 +17,9 @@ export default {
 		left: 50%;
 		top: 50%;
 		z-index: 2;
+		width: 4rem;
 		margin-left: -1.5rem;
 		margin-top: -0.44rem;
-		width: 3rem;
 		line-height: 0.88rem;
 		text-align: center;
 		overflow: hidden;

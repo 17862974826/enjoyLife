@@ -25,7 +25,6 @@
         totalTime: '0',
         letterLevel: 'A',
         classfiy: 0
-       
       }
     },
     props: {

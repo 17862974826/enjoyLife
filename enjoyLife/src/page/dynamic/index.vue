@@ -1,6 +1,6 @@
 <template>
 	<div class="wrap">
-		<toast :msg="errMsg"></toast>
+		<toast :msg="errMsg" v-show="toast"></toast>
 		<transition 
       enter-active-class="animated hinge"
     >
@@ -19,11 +19,13 @@
 			</router-link>
 		</div>
 		 
-		  <dynamic-main  :hotData="hotData" v-show="show"></dynamic-main>
+		  <dynamic-main  :hotData="hotData" v-show="show" @change="handleClickLoveChange"></dynamic-main>
 		  <dynamic-attention :dynamicData="dynamicData" 
-		  					 v-show="attentionShow">
+		  					 v-show="attentionShow"
+		  					 @change="handleLikeClick"
+		  					 @collect="hanleCollectClick">
 		  </dynamic-attention>
-		  <dynamic-near :nearData="nearData" v-show="nearShow"></dynamic-near>
+		  <dynamic-near :nearData="nearData" v-show="nearShow" @change="handleClickAttention"></dynamic-near>
 		 
 	  <dynamic-footer></dynamic-footer>
 	</div>
@@ -48,6 +50,7 @@
 	  data () {
 	    return {
 	      hint: false,
+	      toast: false,
 	      hotData: [],
 	      dynamic: [],
 	      nearData: [],
@@ -136,6 +139,50 @@
 	    },
 	    handleBackClick () {
 	      this.$router.go(-1)
+	    },
+	    handleClickLoveChange (res) {
+	      if (res) {
+	        this.errMsg = res.msg
+	        this.toast = true
+	        setTimeout(() => {
+	          this.toast = false
+	        }, 1200)
+	      } else {
+	        this.getDynamicData()
+	      }
+	    },
+	    handleClickAttention (res) {
+	      if (res) {
+	        this.errMsg = res.msg
+	        this.toast = true
+	        setTimeout(() => {
+	          this.toast = false
+	        }, 1200)
+	      } else {
+	        this.getDynamicData()
+	      }
+	    },
+	    handleLikeClick (res) {
+	      if (res && res.flag) {
+	        this.getDynamicData()
+	      } else {
+	        this.errMsg = res.msg
+	        this.toast = true
+	        setTimeout(() => {
+	          this.toast = false
+	        }, 1200)
+	      }
+	    },
+	    hanleCollectClick (res) {
+	      if (res && res.flag) {
+	        this.getDynamicData()
+	      } else {
+	        this.errMsg = res.msg
+	        this.toast = true
+	        setTimeout(() => {
+	          this.toast = false
+	        }, 1200)
+	      }
 	    }
 	  }
 	}

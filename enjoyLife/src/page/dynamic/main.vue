@@ -14,8 +14,7 @@
 			 		<p class="name-desc">
 			 		  <span>{{item.relaname}}</span>
 			 		  <span class="like-num">
-				 		  <i class="iconfont"  @click.stop="handleLoveClick" ref="icon">
-				 		  	&#xe733;
+				 		  <i class="iconfont icon-aixin"  @click.stop="handleLoveClick($event, item.yid)" ref="icon">
 				 		  </i>
 				 		  {{item.click}}
 			 		  </span>
@@ -26,23 +25,43 @@
 	</div>
 </template>
 <script>
-	import BScroll from 'better-scroll'
-	export default {
-	  name: 'dynamic-main',
-	  props: {
-	    hotData: Array
-	  },
-	  mounted () {
-	    this.$nextTick(() => {
-	      this.scroll = new BScroll(this.$refs.mainWrap)
-	    })
-	  },
-	  methods: {
-	    handleLoveClick (e) {
-	      e.target.className = 'iconfont hot-icons'
-	    }
-	  }
-	}
+import BScroll from 'better-scroll'
+import axios from 'axios'
+export default {
+  name: 'dynamic-main',
+  data () {
+    return {
+      msg: ''
+    }
+  },
+  props: {
+    hotData: Array
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.mainWrap)
+    })
+  },
+  methods: {
+    handleLoveClick (e, id) {
+      axios.post('/index/dyn/click', {yid: id})
+           .then(this.handleClickLoveSucc.bind(this))
+           .catch(this.handleClickLoveErr.bind(this))
+    },
+    handleClickLoveSucc (res) {
+      res.data && (res = res.data)
+      if (res.status === 0) {
+        this.msg = res.msg
+        this.$emit('change', {
+          msg: this.msg
+        })
+      } else {
+        this.$emit('change')
+      }
+    },
+    handleClickLoveErr () {}
+  }
+}
 </script>
 <style scoped>
 	 .mainWrap{

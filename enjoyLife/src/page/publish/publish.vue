@@ -38,20 +38,22 @@ export default {
   },
   methods: {
     handlePublishClick () {
-      let param = new FormData()
+      let pic = new FormData()
       this.files.forEach((val, index) => {
         if (val !== null) {
-          param.append('pic' + (index + 1), val)
+          pic.append('pic' + (index + 1), val)
         }
       })
-      axios.post('/index/dyn/dopost', {pic: param, content: ''}).then(this.handlePublishSucc.bind(this))
+      axios.post('/index/dyn/dopost', pic, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(this.handlePublishSucc.bind(this))
     },
     handlePublishSucc (res) {
-      this.msg = res.data.msg
-      this.show = true
-      setTimeout(() => {
-        this.show = false
-      }, 1200)
+      if (res.data) {
+        this.msg = res.data.msg
+        this.show = true
+        setTimeout(() => {
+          this.show = false
+        }, 1200)
+      }
     },
     handleUploadFin () {
       let file = this.$refs.file.files[0]

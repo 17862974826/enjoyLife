@@ -8,6 +8,7 @@ import Index from '@/page/index/index'
 import detail from '@/page/sportDetail/detail'
 import action from '@/page/actionVideo/action'
 import register from '@/page/register/register'
+import login from '@/page/login/login'
 import start from '@/page/start/start'
 import publish from '@/page/publish/publish'
 
@@ -52,14 +53,14 @@ const router = new Router({
     }, {
       path: '/login',
       name: 'login',
-      component: () => import('@/page/login/login')
+      component: login
     }, {
       path: '/',
       name: 'start',
       component: start
     }, {
       path: '/publish',
-      name: publish,
+      name: 'publish',
       component: publish
     }
   ]
