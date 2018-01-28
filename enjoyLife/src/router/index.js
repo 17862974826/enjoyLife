@@ -11,6 +11,8 @@ import register from '@/page/register/register'
 import login from '@/page/login/login'
 import start from '@/page/start/start'
 import publish from '@/page/publish/publish'
+import selfCenter from '@/page/selfCenter/index'
+import updateSelf from '@/page/selfCenter/updateSelf'
 
 Vue.use(Router)
 
@@ -62,6 +64,14 @@ const router = new Router({
       path: '/publish',
       name: 'publish',
       component: publish
+    }, {
+      path: '/selfCenter',
+      name: 'selfCenter',
+      component: selfCenter
+    }, {
+      path: '/updateSelf',
+      name: 'updateSelf',
+      component: updateSelf
     }
   ]
 })

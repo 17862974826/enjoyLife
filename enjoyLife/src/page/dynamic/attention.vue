@@ -2,10 +2,10 @@
 	<div class="attention">
 		<div class="recomend">
 			<div class="picture">
-				<img class="picture-img" src="http://static1.keepcdn.com/avatar/2016/09/08/14/09cccf8813ec5dfb088dcbc6a77e44bbf9efc091.jpg?imageMogr2/thumbnail/96x" alt="">
+				<img class="picture-img" :src="user.pic" alt="">
 			</div>
 			<p class="recomend-desc">
-				BeckG
+				{{user.relaname || '匿名'}}
 				<span class="recomend-detail">(热门圈主)</span>
 			</p>
 			<div class="attach" @click="handleAttClick">关注</div>
@@ -20,11 +20,11 @@
 								tag="li">
 					<div class="container-top">
 						<div class="picture container-img">
-							<img class="picture-img" :src="item.pic1" alt="">
+							<img class="picture-img" :src="item.pic1 || '/static/images/common/logo.jpg'" alt="">
 						</div>
 						<div class="container-title">
-							<p class="user-name">{{item.name}}</p>
-							<p class="user-date">{{item.yid}}</p>
+							<p class="user-name">{{item.name || '匿名'}}</p>
+							<p class="user-date">{{item.sex === 0? '女': '男'}}</p>
 						</div>
 					</div>
 					<p class="user-desc">{{item.content}}</p>
@@ -53,9 +53,7 @@ import BScroll from 'better-scroll'
 import axios from 'axios'
 export default {
   name: 'dynamic-attention',
-  props: {
-    dynamicData: Array
-  },
+  props: ['dynamicData', 'user'],
   data () {
     return {
       swiperOption: {
@@ -67,7 +65,8 @@ export default {
         observeParents: true,
         centeredSlides: true,
         loopAdditionalSlides: 1
-      }
+      },
+      name: ''
     }
   },
   mounted () {
@@ -143,6 +142,7 @@ export default {
 	}
 	.picture-img{
 		width: 100%;
+		height: 100%;
 		border-radius: .8rem;
 	}
 	.recomend-desc{

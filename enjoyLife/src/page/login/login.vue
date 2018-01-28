@@ -111,7 +111,7 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    if (from.name === 'start') {
+    if (from.name === 'start' || from.name === 'dynamic' || from.name === 'selfCenter') {
       window.location.reload()
     }
     next()

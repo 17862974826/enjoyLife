@@ -22,6 +22,7 @@
 		  <dynamic-main  :hotData="hotData" v-show="show" @change="handleClickLoveChange"></dynamic-main>
 		  <dynamic-attention :dynamicData="dynamicData" 
 		  					 v-show="attentionShow"
+		  					 :user="user"
 		  					 @change="handleLikeClick"
 		  					 @collect="hanleCollectClick">
 		  </dynamic-attention>
@@ -54,6 +55,7 @@
 	      hotData: [],
 	      dynamic: [],
 	      nearData: [],
+	      user: [],
 	      show: true,
 	      msg: '',
 	      errMsg: '',
@@ -100,6 +102,7 @@
 	      } else if (res.status === 'undefined') {
 	        this.errMsg = '请重新登录'
 	      } else {
+	        this.user = res.user
 	        this.hotData = res.hot
 	        this.dynamic = res.dynamic
 	        this.nearData = res.near

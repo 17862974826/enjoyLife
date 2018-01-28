@@ -1,22 +1,57 @@
 <template>
-  <div class="content">
-   <h2 class="title">{{title}}</h2>
+  <div class="content" @click="handleShowVideo">
+   <h2 class="title">{{info.title}}</h2>
    <div class="show_self">
-      <div class="img_wrapper" v-for="item in showSelf">
-        <div class="wrapper" :style="item.imgUrl"></div>
-        <div class="des_wrapper">
-          <p class="des_title">{{item.des}}</p>
-          <p class="des_num">{{item.num}}</p>
-        </div>
+      <div class="img_wrapper" v-show="imgStatus">
+        <img class="wrapper" :src="info.picture" />
       </div>
+      <video :src='info.url' class="video" v-if="videoStatus" ref="video" controls></video>
    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'showSelf',
-  props: ['showSelf', 'title']
+  props: ['video'],
+  data () {
+    return {
+      info: {},
+      videoStatus: false,
+      imgStatus: true
+    }
+  },
+  methods: {
+    getVideoData () {
+      axios.post('/index/cage/video', {cid: this.video})
+            .then(this.getVideoDataSucc.bind())
+            .then(this.getVideoDataErr.bind())
+    },
+    handleShowVideo () {
+      this.imgStatus = false
+      this.videoStatus = true
+      this.$nextTick(() => {
+        this.$refs.video.play()
+      })
+    },
+    getVideoDataSucc (res) {
+      res.data && (res = res.data)
+      if (res.status === 1) {
+        this.info = res.msg[0]
+      }
+    },
+    getVideoDataErr () {}
+  },
+  activated () {
+    this.videoStatus = false
+    this.imgStatus = true
+  },
+  watch: {
+    video () {
+      this.getVideoData()
+    }
+  }
 }
 </script>
 
@@ -39,34 +74,16 @@ export default {
     margin-top: 0.3rem;
   }
   .img_wrapper {
-    width: 50%;
-    display: flex;
-  }
-  .des_wrapper {
-    flex: 1;
-    overflow: hidden;
-    margin-left: 0.2rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .des_title {
-    margin: 0.3rem 0 0.2rem;
-    font-size: 0.23rem;
-    color: #838383;
-  }
-  .des_num {
-    font-size: 0.2rem;
-    color: #606060
+    width: 100%;
+    height: 47vw;
   }
   .wrapper {
-    width: 1.2rem;
-    height: 1.2rem;
-    margin-bottom: 0.2rem;
-    box-sizing: border-box;
-    background-color: #eeedef;
-    background-size: 100% 100%;
-    background-position: center center;
-    background-repeat: no-repeat; 
+    width: 100%;
+    height: 100%; 
+  }
+  .video {
+    width: 100%;
+    height: 50%;
   }
 </style>
 

@@ -1,13 +1,12 @@
 <template>
 	<div class="mainWrap" ref="mainWrap">
 		<ul>
-			<router-link  :to="'/detail/' + item.yid" 
-										class="main-con border-bottom" 
-										v-for="(item, index) in hotData" 
-										:key="item.yid" 
-										tag="li">
+			<li 
+				class="main-con border-bottom" 
+				v-for="(item, index) in hotData" 
+				:key="item.yid" >
 			 	<div class="img-wrap">
-			 		<img class="img-img" :src="item.pic1" alt="">
+			 		<img class="img-img" :src="item.pic1 || '/static/images/common/logo.jpg'" alt="">
 			 	</div>
 			 	<div class="main-right">
 			 		<p class="main-desc">{{item.content}}</p>
@@ -20,7 +19,7 @@
 			 		  </span>
 			 		</p>
 			 	</div>
-			 </router-link>
+			 </li>
 		 </ul>
 	</div>
 </template>
@@ -60,6 +59,9 @@ export default {
       }
     },
     handleClickLoveErr () {}
+  },
+  activated () {
+    this.scroll && this.scroll.refresh()
   }
 }
 </script>

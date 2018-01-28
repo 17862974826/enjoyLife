@@ -7,7 +7,7 @@
         <router-link to="/course" class="back iconfont" tag="span">&#xe65b;</router-link>
   	 </div>
 			<train :train="train"></train>
-      <show-self :showSelf="showSelf" :title="title"></show-self>
+      <show-self :video="video"></show-self>
       <comment :comment="comment"></comment>
       <div class="footer">
         <input class="publish" type="text" placeholder="说些什么吧" v-model="publish"/>
@@ -39,7 +39,8 @@ export default {
       comment: [],
       cid: '',
       toast: true,
-      msg: ''
+      msg: '',
+      video: ''
     }
   },
   components: {
@@ -53,12 +54,13 @@ export default {
       res.data && (res = res.data)
       this.comment = res.msg
       this.cid = res.res[0].cid
+      this.video = this.cid
       this.$nextTick(() => {
         this.train = res.res[0]
       })
     },
     getSportData () {
-      axios.post('/index/cage/comment', {cid: this.$route.params})
+      axios.post('/index/cage/comment', {cid: this.$route.params.id})
           .then(this.getTrainDataSucc.bind(this))
            .then(this.getTrainDataErr.bind(this))
     },

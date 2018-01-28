@@ -3,7 +3,7 @@
     <div class="header border-bottom">
       <div class="iconfont icons" @click="handleBackClick">&#xe65b;</div>
       <div class="mine">我的</div>
-      <router-link to="/register">
+      <router-link :to="{path: '/selfCenter', query: {id: userInfo.uid}}">
         <div class="iconfont icons">&#xe628;</div>
       </router-link>
     </div>
@@ -13,7 +13,7 @@
       <div class="info">
         <div class="info-wrap">
           <div class="header-img">
-            <img class="user-img" :src="userInfo.pic">
+            <img class="user-img" :src="userInfo.pic || '/static/images/common/logo.jpg'">
           </div>
           <p class="user-name">{{userInfo.relaname || "匿名"}}</p>
         </div>
@@ -61,7 +61,7 @@
         })
       })
     },
-    created () {
+    activated () {
       axios.get('/index/info/list').then(this.handleGetInfoSucc.bind(this))
                                     .catch(this.handleGetInfoErr.bind(this))
     },
@@ -100,8 +100,9 @@
   }
   .header{
     display: flex;
-    line-height: 1.6rem;
-    font-size: .4rem;
+    line-height: 0.88rem;
+    padding-top: 0.44rem;
+    font-size: .2rem;
     color: #333;
     background: #fff;
   }

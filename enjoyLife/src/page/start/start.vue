@@ -11,7 +11,7 @@ export default {
     refresh () {
       setTimeout(() => {
         this.$router.push('/login')
-      }, 3000)
+      }, 2000)
     }
   },
   activated () {
