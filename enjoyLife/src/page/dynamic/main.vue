@@ -42,7 +42,9 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.mainWrap)
+      this.scroll = new BScroll(this.$refs.mainWrap, {
+        click: true
+      })
     })
   },
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
   	<div class="container">
       <toast :msg="msg" v-show="toast"></toast>
   		<div class="banner">
@@ -9,7 +9,7 @@
 			<train :train="train"></train>
       <show-self :video="video"></show-self>
       <comment :comment="comment"></comment>
-      <div class="footer">
+      <div class="footer" ref="footer">
         <input class="publish" type="text" placeholder="说些什么吧" v-model="publish"/>
         <p class="des" @click="handlePublishSubmit">发布</p>
         <p class="sign iconfont">&#xe733;</p>
@@ -162,6 +162,7 @@ export default {
   }
   .footer {
     display: flex;
+    position: absolute;
     align-items: center;
     padding-left: 0.2rem;
     box-sizing: border-box;

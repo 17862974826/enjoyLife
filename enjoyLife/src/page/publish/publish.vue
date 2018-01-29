@@ -156,7 +156,7 @@ export default {
 		}
 		.content {
 			position: relative;
-			flex: 1;
+			height: 10rem;
 		}
 		.file {
 			position: absolute;
