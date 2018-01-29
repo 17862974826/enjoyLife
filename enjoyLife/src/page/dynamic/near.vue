@@ -13,7 +13,7 @@
 						<img class="user-img" :src="item.pic" alt="">
 					</div>
 					<div class="userInfo">
-						<p>{{item.relaname}}</p>
+						<p>{{item.relaname || '匿名'}}</p>
 						<p class="user-case">{{item.content}}</p>
 					</div>
 					<div class="attach" @click.stop="handleAttClick($event, item.uid)">关注</div>

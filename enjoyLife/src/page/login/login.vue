@@ -97,6 +97,7 @@ export default {
           password: this.password
         }
         window.localStorage.user = JSON.stringify(user)
+        window.localStorage.flag = 1
       }
     }
   },
@@ -112,7 +113,9 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     if (from.name === 'start' || from.name === 'dynamic' || from.name === 'selfCenter') {
-      window.location.reload()
+      setTimeout(() => {
+        window.location.reload()
+      }, 200)
     }
     next()
   }

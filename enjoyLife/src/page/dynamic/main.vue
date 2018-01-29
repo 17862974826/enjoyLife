@@ -17,6 +17,10 @@
 				 		  </i>
 				 		  {{item.click}}
 			 		  </span>
+			 		   <span class="like-num">
+				 		  <i class="iconfont "  @click.stop="handleCollectClick($event, item.yid)" ref="icon">&#xe66b;
+				 		  </i>
+			 		  </span>
 			 		</p>
 			 	</div>
 			 </li>
@@ -47,6 +51,18 @@ export default {
            .then(this.handleClickLoveSucc.bind(this))
            .catch(this.handleClickLoveErr.bind(this))
     },
+    handleCollectClick (e, id) {
+      axios.post('/index/dyn/collect', {yid: id})
+           .then(this.handleCollectionClickSucc.bind(this))
+           .catch(this.handleCollectionClickErr.bind(this))
+    },
+    handleCollectionClickSucc (res) {
+      res.data && (res = res.data)
+      this.$emit('collect', {
+        msg: res.msg
+      })
+    },
+    handleCollectionClickErr () {},
     handleClickLoveSucc (res) {
       res.data && (res = res.data)
       if (res.status === 0) {
@@ -55,7 +71,11 @@ export default {
           msg: this.msg
         })
       } else {
-        this.$emit('change')
+        this.msg = '首次点赞成功'
+        this.$emit('change', {
+          msg: this.msg,
+          flag: true
+        })
       }
     },
     handleClickLoveErr () {}
@@ -86,23 +106,28 @@ export default {
 	 }
 	 .main-right{
 	 	flex: 1;
+	 	overflow: hidden;
 	 }
 	 .main-desc{
+	 	width: 100%;
+	 	line-height: .4rem;
+	 	height: 1.2rem;
+	 	overflow: hidden;
+	 	color: #000;
+	 	word-break:break-all;
 	 	font-size: .28rem;
-	 	color: #333333;
 	 	margin-top: .22rem;
 	 }
 	 .name-desc{
 	 	font-size: .24rem;
 	 	color: #333333;
-	 	margin-top: 1.1rem;
+	 	margin-top: 0.3rem;
 	 }
 	 .like-num{
 	 	display: inline-block;
 	 	width: 1rem;
-	 	height: 1rem;
 	 	float: right;
-	 	margin-right: .5rem;
+	 	margin-right: .2rem;
 	 }
 	 .hot-icons{
 	 	color: red;

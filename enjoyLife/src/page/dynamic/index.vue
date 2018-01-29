@@ -19,7 +19,10 @@
 			</router-link>
 		</div>
 		 
-		  <dynamic-main  :hotData="hotData" v-show="show" @change="handleClickLoveChange"></dynamic-main>
+		  <dynamic-main  :hotData="hotData" v-show="show" 
+		  @change="handleClickLoveChange"
+		  @collect="hanleCollectClick"
+		  ></dynamic-main>
 		  <dynamic-attention :dynamicData="dynamicData" 
 		  					 v-show="attentionShow"
 		  					 :user="user"
@@ -144,24 +147,34 @@
 	      this.$router.go(-1)
 	    },
 	    handleClickLoveChange (res) {
-	      if (res) {
+	      if (!res.flag) {
 	        this.errMsg = res.msg
 	        this.toast = true
 	        setTimeout(() => {
 	          this.toast = false
 	        }, 1200)
 	      } else {
+	        this.errMsg = res.msg
+	        this.toast = true
+	        setTimeout(() => {
+	          this.toast = false
+	        }, 1200)
 	        this.getDynamicData()
 	      }
 	    },
 	    handleClickAttention (res) {
-	      if (res) {
+	      if (!res.flag) {
 	        this.errMsg = res.msg
 	        this.toast = true
 	        setTimeout(() => {
 	          this.toast = false
 	        }, 1200)
 	      } else {
+	        this.errMsg = res.msg
+	        this.toast = true
+	        setTimeout(() => {
+	          this.toast = false
+	        }, 1200)
 	        this.getDynamicData()
 	      }
 	    },

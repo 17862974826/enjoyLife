@@ -14,7 +14,6 @@
         <p class="des" @click="handlePublishSubmit">发布</p>
         <p class="sign iconfont">&#xe733;</p>
       </div>
-      <div class="up"></div>
   	</div>
   </div>
 </template>
@@ -99,11 +98,6 @@ export default {
 	.container {
 		background: #ebf0f2;
 	}
-  .up {
-    width: 100%;
-    height: 0.96rem;
-    background: #fff;
-  }
 	.banner {
     width: 100%;
     position: relative;
@@ -168,8 +162,6 @@ export default {
   }
   .footer {
     display: flex;
-    position: fixed;
-    bottom: 0;
     align-items: center;
     padding-left: 0.2rem;
     box-sizing: border-box;

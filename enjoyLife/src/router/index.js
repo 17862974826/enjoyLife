@@ -13,6 +13,7 @@ import start from '@/page/start/start'
 import publish from '@/page/publish/publish'
 import selfCenter from '@/page/selfCenter/index'
 import updateSelf from '@/page/selfCenter/updateSelf'
+import article from '@/page/article/article'
 
 Vue.use(Router)
 
@@ -72,6 +73,10 @@ const router = new Router({
       path: '/updateSelf',
       name: 'updateSelf',
       component: updateSelf
+    }, {
+      path: '/article',
+      name: 'article',
+      component: article
     }
   ]
 })

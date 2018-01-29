@@ -40,7 +40,7 @@
      </div>
    </div>
    <div class="footer">
-     <div class="inner" @click="handleStatusClick">{{status}}</div>
+     <div class="inner" @click="handleStatusClick" :class="{active: flag}">{{status}}</div>
    </div>
   </div>
 </template>
@@ -51,7 +51,7 @@ export default {
   data () {
     return {
       status: '退出',
-      flag: 1,
+      flag: 0,
       id: ''
     }
   },
@@ -60,11 +60,20 @@ export default {
       this.$router.go(-1)
     },
     handleStatusClick () {
+      axios.post('/index/index/out')
+            .then(this.handleStatusClickSucc.bind(this))
+    },
+    handleStatusClickSucc (res) {
+      window.localStorage.flag = 0
       this.$router.push('/login')
     }
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
+      if (window.localStorage.flag === '0') {
+        vm.status = '登录'
+        vm.flag = 1
+      }
       vm.id = to.query.id
     })
   }
@@ -77,7 +86,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    overflow: hidden;
   }
   .header {
     position: relative;
@@ -140,5 +148,8 @@ export default {
     font-size: 0.32rem;
     color: #fff;
     background: red;
+  }
+  .active {
+    background: #60adfe;
   }
 </style>

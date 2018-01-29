@@ -91,7 +91,7 @@ export default {
         })
       } else {
         this.$emit('change', {
-          msg: res.msg,
+          msg: '首次点赞成功',
           flag: true
         })
       }

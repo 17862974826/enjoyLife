@@ -4,6 +4,7 @@
    <div class="show_self">
       <div class="img_wrapper" v-show="imgStatus">
         <img class="wrapper" :src="info.picture" />
+        <img  src="https://staticweb.keepcdn.com/show/images/homepage/play-1a7aadd99d.png" class="btn" />
       </div>
       <video :src='info.url' class="video" v-if="videoStatus" ref="video" controls></video>
    </div>
@@ -74,8 +75,18 @@ export default {
     margin-top: 0.3rem;
   }
   .img_wrapper {
+    position: relative;
     width: 100%;
     height: 47vw;
+  }
+  .btn {
+    position: absolute;
+    width: 1.44rem;
+    height: 1.44rem;
+    top: 50%;
+    margin-top: -0.72rem;
+    left: 50%;
+    margin-left: -0.72rem;
   }
   .wrapper {
     width: 100%;
