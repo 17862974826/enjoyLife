@@ -75,7 +75,7 @@
 	  computed: {
 	    dynamicData () {
 	      let arr = []
-	      this.dynamic.forEach((val) => {
+	      this.dynamic && this.dynamic.forEach((val) => {
 	        for (let key in val) {
 	          if (!key.indexOf('pic')) {
 	            arr.push({
@@ -169,6 +169,7 @@
 	        setTimeout(() => {
 	          this.toast = false
 	        }, 1200)
+	        this.getDynamicData()
 	      } else {
 	        this.errMsg = res.msg
 	        this.toast = true

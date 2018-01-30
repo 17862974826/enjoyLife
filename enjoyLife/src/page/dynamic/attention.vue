@@ -13,18 +13,17 @@
 		<div class="space border-topbottom"></div>
 		<div ref="wrapper" class="wrapper">
 			<ul>
-				<router-link  :to="'/detail/' + item.uid"  
-								class="container border-bottom" 
-								v-for="item in dynamicData" 
-								:key="item.yid"
-								tag="li">
+				<li 
+					class="container border-bottom" 
+					v-for="item in dynamicData" 
+					:key="item.yid">
 					<div class="container-top">
 						<div class="picture container-img">
 							<img class="picture-img" :src="item.pic1 || '/static/images/common/logo.jpg'" alt="">
 						</div>
 						<div class="container-title">
-							<p class="user-name">{{item.name || '匿名'}}</p>
-							<p class="user-date">{{item.sex === 0? '女': '男'}}</p>
+							<p class="user-name">{{item.relaname || '匿名'}}</p>
+							<p class="user-date">{{item.sex === 0 ? '女': '男'}}</p>
 						</div>
 					</div>
 					<p class="user-desc">{{item.content}}</p>
@@ -42,7 +41,7 @@
 						<p class="user-like" @click.stop="handlelikeClick(item.yid)"><span class="iconfont user-des">&#xe733;</span>{{item.click}}</p>
 						<p class="user-like" @click.stop="handleCollectionClick(item.yid)"><span class="iconfont user-des">&#xe66b;</span>{{item.gid}}</p>
 					</div>
-				</router-link>
+				</li>
 			</ul>
 		</div>
 	</div>

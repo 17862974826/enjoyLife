@@ -36,7 +36,7 @@
   		<div class="division">
   			<p class="other_login">第三方登录</p>
   			<div class="icon">
-  				<span class="iconfont inner" id="hzy_fast_login"></span>
+  				<span class="iconfont inner" id="hzy_fast_login" @click="handleOtherLogin"></span>
   			</div>
   		</div>
   	</div>
@@ -57,6 +57,9 @@ export default {
     }
   },
   methods: {
+    handleOtherLogin () {
+      window.localStorage.flag = 1
+    },
     handleRemeberClick () {
       if (this.pwdFlag) {
         this.$refs.pwd.src = '/static/images/common/login.jpg'

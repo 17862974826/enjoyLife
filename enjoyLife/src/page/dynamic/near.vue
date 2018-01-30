@@ -4,7 +4,7 @@
 		<div class="white-space border-bottom"></div>
 		<div class="box" ref="box">
 			<ul>
-				<router-link :to="'/detail/' + item.uid" 
+				<li
 					class="items border-bottom" 
 					v-for="item in nearData" 
 					:key="item.uid"
@@ -17,7 +17,7 @@
 						<p class="user-case">{{item.content}}</p>
 					</div>
 					<div class="attach" @click.stop="handleAttClick($event, item.uid)">关注</div>
-				</router-link>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -33,7 +33,9 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.box)
+      this.scroll = new BScroll(this.$refs.box, {
+        click: true
+      })
     })
   },
   methods: {

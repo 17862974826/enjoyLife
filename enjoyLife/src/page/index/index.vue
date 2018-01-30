@@ -62,7 +62,6 @@ export default {
   },
   methods: {
     getHomeDataSucc (res) {
-      console.log(res)
       res.data && (res = res.data)
       if (res.big) {
         this.title = res.big

@@ -4,7 +4,7 @@
       enter-active-class="animated fadeInLeft"
       leave-active-class="animated fadeOutRight"
     >
-      <keep-alive exclude="publish dynamic mine">
+      <keep-alive>
     	   <router-view/>
       </keep-alive>
     </transition>

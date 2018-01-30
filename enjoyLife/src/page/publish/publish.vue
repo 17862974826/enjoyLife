@@ -104,6 +104,7 @@ export default {
         images.style.width = '20%'
         images.style.height = '60px'
         images.style.border = '1px dashed #000'
+        images.style.marginTop = '0.2rem'
         images.index = this.count
         this.count++
         this.$refs.box.appendChild(images)
@@ -129,12 +130,6 @@ export default {
 			display: flex;
 			flex-direction: column;
 			padding-top: 0.4rem;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			overflow: hidden;
 		}
 		.publish {
 			display: flex;

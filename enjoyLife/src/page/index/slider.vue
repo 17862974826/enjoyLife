@@ -4,7 +4,7 @@
       <h2 class="title">{{key}}</h2>
       <swiper :options="swiperOption" ref="swiper">
         <swiper-slide v-for="item in items" :key="item.id">
-          <div class="img_wrap" @click="handleArricleClick(item.id)">
+          <div class="img_wrap" @click="handleArricleClick(item.id, item.classid)">
             <img :src="item.pic" class="pic">
           </div>
           <div class="des_wrap">
@@ -33,10 +33,10 @@ export default {
     }
   },
   methods: {
-    handleArricleClick (id) {
+    handleArricleClick (id, classid) {
       this.$router.push({
         path: '/article',
-        query: {id: id}
+        query: {id: id, classid: classid}
       })
     }
   },
